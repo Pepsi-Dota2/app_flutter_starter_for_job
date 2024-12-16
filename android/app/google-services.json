@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1081481250045",
+    "project_id": "ig-clone-pepsidev",
+    "storage_bucket": "ig-clone-pepsidev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081481250045:android:f0872cb7d457eaeed1aa94",
+        "android_client_info": {
+          "package_name": "com.example.app_flutter_starter_for_job"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpgNjBszhDE42G5eKqMAKUaAyr25y76lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
