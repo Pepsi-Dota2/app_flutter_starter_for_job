@@ -24,6 +24,10 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     });
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+        centerTitle: true,
+      ),
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return state.when(
