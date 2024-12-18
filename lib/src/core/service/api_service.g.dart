@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_auth.dart';
+part of 'api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,18 +8,56 @@ part of 'api_auth.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _ApiAuth implements ApiAuth {
-  _ApiAuth(
+class _AppApi implements AppApi {
+  _AppApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  });
+  }) {
+    baseUrl ??= 'https://jsonplaceholder.typicode.com';
+  }
 
   final Dio _dio;
 
   String? baseUrl;
 
   final ParseErrorLogger? errorLogger;
+
+  @override
+  Future<List<GetProductModel>> getProduct() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<GetProductModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'https://jsonplaceholder.typicode.com/photos',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<GetProductModel> _value;
+    try {
+      _value = _result.data!
+          .map((dynamic i) =>
+              GetProductModel.fromJson(i as Map<String, dynamic>))
+          .toList();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&

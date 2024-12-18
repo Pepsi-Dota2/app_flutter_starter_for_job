@@ -3,7 +3,7 @@ import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/custom_button_login.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/custom_formfield.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/loding_dialog.dart';
+import 'package:app_flutter_starter_for_job/src/core/widgets/loding_dialog.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/password_input.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/radius_button.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/text_input.dart';

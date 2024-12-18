@@ -12,8 +12,18 @@ import 'package:app_flutter_starter_for_job/src/core/config/DI/module.dart'
     as _i519;
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart'
     as _i884;
-import 'package:app_flutter_starter_for_job/src/core/service/api_auth.dart'
-    as _i222;
+import 'package:app_flutter_starter_for_job/src/core/service/api_service.dart'
+    as _i845;
+import 'package:app_flutter_starter_for_job/src/module/home/data/datasource/local_datasource.dart'
+    as _i616;
+import 'package:app_flutter_starter_for_job/src/module/home/data/datasource/remote_datasource.dart'
+    as _i622;
+import 'package:app_flutter_starter_for_job/src/module/home/data/repository/production_repository_impl.dart'
+    as _i1000;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/product_repository.dart'
+    as _i697;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart'
+    as _i797;
 import 'package:app_flutter_starter_for_job/src/module/login/data/datasource/login_local_datasource.dart'
     as _i723;
 import 'package:app_flutter_starter_for_job/src/module/login/data/datasource/remote_login_datasource.dart'
@@ -49,15 +59,26 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => injectableModule.dio());
     gh.lazySingleton<_i723.LoginLocalDatasource>(
         () => _i723.LoginLocalDatasourceImpl());
-    gh.lazySingleton<_i222.ApiAuth>(() => _i222.ApiAuth(gh<_i361.Dio>()));
+    gh.lazySingleton<_i616.LocalDatasource>(
+        () => _i616.ProductLocalDatasource());
+    gh.lazySingleton<_i845.AppApi>(() => _i845.AppApi(gh<_i361.Dio>()));
     gh.lazySingleton<_i1011.LoginRemoteDatasource>(
         () => _i1011.RemoteLoginDatasource(gh<_i59.FirebaseAuth>()));
+    gh.lazySingleton<_i622.RemoteDatasource>(
+        () => _i622.ProductRemoteDatasource(gh<_i845.AppApi>()));
+    gh.lazySingleton<_i697.ProductRepository>(
+        () => _i1000.ProductionRepositoryImpl(
+              gh<_i616.LocalDatasource>(),
+              remoteDatasource: gh<_i622.RemoteDatasource>(),
+            ));
     gh.lazySingleton<_i1062.LoginRepository>(() => _i32.LoginRepositoryImpl(
           gh<_i723.LoginLocalDatasource>(),
           loginRemoteDatasource: gh<_i1011.LoginRemoteDatasource>(),
         ));
     gh.lazySingleton<_i406.LoginUseCase>(
         () => _i406.LoginUseCase(gh<_i1062.LoginRepository>()));
+    gh.lazySingleton<_i797.ProductUseCase>(
+        () => _i797.ProductUseCase(gh<_i697.ProductRepository>()));
     return this;
   }
 }

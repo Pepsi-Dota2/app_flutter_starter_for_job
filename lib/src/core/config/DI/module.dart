@@ -26,4 +26,5 @@ abstract class InjectableModule {
 
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
 }
