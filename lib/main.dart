@@ -9,7 +9,7 @@ Future<void> main() async {
 
 class MyAppLication extends StatelessWidget {
    MyAppLication({super.key});
-    final _appRouter = AppRouter();
+    final _appRouter = getIt<AppRouter>();
 
   @override
   Widget build(BuildContext context) {

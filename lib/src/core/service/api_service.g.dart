@@ -13,9 +13,7 @@ class _AppApi implements AppApi {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://jsonplaceholder.typicode.com';
-  }
+  });
 
   final Dio _dio;
 

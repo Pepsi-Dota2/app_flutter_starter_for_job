@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
             orElse: () => LoadingDialog.showLoadingDialog(context),
             success: (user) {
               LoadingDialog.hideLoadingDialog(context);
-              context.router.replace(const HomeRoute());
+              context.router.replace(DashBoardRoute());
             },
             failure: (failure) {
               LoadingDialog.hideLoadingDialog(context);

@@ -5,3 +5,10 @@ enum DataStatus {
   error,
   empty,
 }
+
+enum BottomItem{ 
+  home,
+  // search,
+  // cart,
+  profile,
+}

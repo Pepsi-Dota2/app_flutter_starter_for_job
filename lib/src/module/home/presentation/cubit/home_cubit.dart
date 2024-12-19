@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
 import 'package:app_flutter_starter_for_job/src/core/usecase/use_case.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/get_product_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart';

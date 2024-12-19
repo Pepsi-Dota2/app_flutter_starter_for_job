@@ -15,6 +15,14 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    DashBoardRoute.name: (routeData) {
+      final args = routeData.argsAs<DashBoardRouteArgs>(
+          orElse: () => const DashBoardRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DashBoardPage(key: args.key),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -29,7 +37,42 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: LoginPage(key: args.key)),
       );
     },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfilePage(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [DashBoardPage]
+class DashBoardRoute extends PageRouteInfo<DashBoardRouteArgs> {
+  DashBoardRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DashBoardRoute.name,
+          args: DashBoardRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'DashBoardRoute';
+
+  static const PageInfo<DashBoardRouteArgs> page =
+      PageInfo<DashBoardRouteArgs>(name);
+}
+
+class DashBoardRouteArgs {
+  const DashBoardRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'DashBoardRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -72,4 +115,18 @@ class LoginRouteArgs {
   String toString() {
     return 'LoginRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

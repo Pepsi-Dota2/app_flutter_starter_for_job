@@ -4,6 +4,7 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget implements AutoRouteWrapper {
@@ -12,17 +13,13 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<HomeCubit>(),
+      create: (context) => getIt<HomeCubit>()..getPhotos(),
       child: this,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<HomeCubit>().getPhotos();
-    });
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -54,6 +51,14 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                   width: 50,
                                   height: 50,
                                   fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      width: 50,
+                                      height: 50,
+                                      color:
+                                          Colors.white,
+                                    );
+                                  },
                                 ),
                                 title: Text(data[index].title),
                                 subtitle: Text('ID: ${data[index].albumId}'),
