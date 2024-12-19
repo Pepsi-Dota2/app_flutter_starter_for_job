@@ -36,10 +36,16 @@ import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/logi
     as _i406;
 import 'package:app_flutter_starter_for_job/src/module/profile/data/datasource/profile_remote_datasource.dart'
     as _i215;
+import 'package:app_flutter_starter_for_job/src/module/profile/data/repository/logout_repository_impl.dart'
+    as _i889;
 import 'package:app_flutter_starter_for_job/src/module/profile/data/repository/profile_repository_impl.dart'
     as _i36;
+import 'package:app_flutter_starter_for_job/src/module/profile/domain/repository/logout_repository.dart'
+    as _i796;
 import 'package:app_flutter_starter_for_job/src/module/profile/domain/repository/profile_repository.dart'
     as _i365;
+import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/logout_usecase.dart'
+    as _i709;
 import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/profile_usecase.dart'
     as _i571;
 import 'package:dio/dio.dart' as _i361;
@@ -86,6 +92,10 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i616.LocalDatasource>(),
               remoteDatasource: gh<_i622.RemoteDatasource>(),
             ));
+    gh.lazySingleton<_i796.LogoutRepository>(() => _i889.LogoutRepositoryImpl(
+        profileRemoteDatasource: gh<_i215.ProfileRemoteDatasource>()));
+    gh.lazySingleton<_i709.LogoutUseCase>(() =>
+        _i709.LogoutUseCase(logoutRepository: gh<_i796.LogoutRepository>()));
     gh.lazySingleton<_i1062.LoginRepository>(() => _i32.LoginRepositoryImpl(
           gh<_i723.LoginLocalDatasource>(),
           loginRemoteDatasource: gh<_i1011.LoginRemoteDatasource>(),
