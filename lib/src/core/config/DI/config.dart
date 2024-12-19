@@ -6,6 +6,8 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/d
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/login_usecase.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/profile_usecase.dart';
+import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +23,6 @@ Future<GetIt> configureDependencies() async {
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<ProductUseCase>()));
   getIt.registerFactory<DashboardCubit>(() => DashboardCubit());
-
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt<ProfileUseCase>()));
   return getIt.init();
 }

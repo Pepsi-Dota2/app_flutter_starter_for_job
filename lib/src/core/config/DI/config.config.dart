@@ -34,6 +34,14 @@ import 'package:app_flutter_starter_for_job/src/module/login/domain/repository/r
     as _i1062;
 import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/login_usecase.dart'
     as _i406;
+import 'package:app_flutter_starter_for_job/src/module/profile/data/datasource/profile_remote_datasource.dart'
+    as _i215;
+import 'package:app_flutter_starter_for_job/src/module/profile/data/repository/profile_repository_impl.dart'
+    as _i36;
+import 'package:app_flutter_starter_for_job/src/module/profile/domain/repository/profile_repository.dart'
+    as _i365;
+import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/profile_usecase.dart'
+    as _i571;
 import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
@@ -64,8 +72,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i845.AppApi>(() => _i845.AppApi(gh<_i361.Dio>()));
     gh.lazySingleton<_i1011.LoginRemoteDatasource>(
         () => _i1011.RemoteLoginDatasource(gh<_i59.FirebaseAuth>()));
+    gh.lazySingleton<_i215.ProfileRemoteDatasource>(() =>
+        _i215.ProfileRemoteDatasourceImpl(
+            firebaseAuth: gh<_i59.FirebaseAuth>()));
+    gh.lazySingleton<_i365.ProfileRepository>(() => _i36.ProfileRepositoryImpl(
+        profileRemoteDatasource: gh<_i215.ProfileRemoteDatasource>()));
     gh.lazySingleton<_i622.RemoteDatasource>(
         () => _i622.ProductRemoteDatasource(gh<_i845.AppApi>()));
+    gh.lazySingleton<_i571.ProfileUseCase>(() =>
+        _i571.ProfileUseCase(profileRepository: gh<_i365.ProfileRepository>()));
     gh.lazySingleton<_i697.ProductRepository>(
         () => _i1000.ProductionRepositoryImpl(
               gh<_i616.LocalDatasource>(),
