@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                     children: [
                       Expanded(
                         child: ListView.builder(
-                          itemCount: data.length, // Use the actual data length
+                          itemCount: 10,
                           itemBuilder: (BuildContext context, int index) {
                             return Card(
                               margin: const EdgeInsets.symmetric(vertical: 8),
@@ -55,8 +55,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                     return Container(
                                       width: 50,
                                       height: 50,
-                                      color:
-                                          Colors.white,
+                                      color:Colors.white,
                                     );
                                   },
                                 ),

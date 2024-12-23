@@ -8,7 +8,7 @@ enum DataStatus {
 
 enum BottomItem{ 
   home,
-  // search,
+  location,
   // cart,
   profile,
 }

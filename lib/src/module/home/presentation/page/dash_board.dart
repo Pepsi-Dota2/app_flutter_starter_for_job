@@ -5,6 +5,7 @@ import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
 import 'package:auto_route/auto_route.dart';
@@ -44,17 +45,17 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
         },
-        children: const [HomePage(), ProfilePage()],
+        children: const [HomePage(),LocationPage(), ProfilePage() ],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           return AnimatedBottomNavigationBar(
-            icons: const [Icons.home, Icons.person],
+            icons: const [Icons.home, Icons.map, Icons.person],
             activeIndex: state.index,
-            gapLocation: GapLocation.center,
+            gapLocation: GapLocation.end,
             notchSmoothness: NotchSmoothness.softEdge,
-            leftCornerRadius: 32,
-            rightCornerRadius: 32,
+            leftCornerRadius: 0,
+            rightCornerRadius: 0,
             activeColor: AppColors.tealGreen,
             inactiveColor: AppColors.grey,
             onTap: (index) {

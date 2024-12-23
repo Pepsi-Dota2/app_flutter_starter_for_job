@@ -13,8 +13,11 @@ class DashboardCubit extends Cubit<DashboardState> {
       case BottomItem.home:
         newIndex = 0;
         break;
-      case BottomItem.profile:
+      case BottomItem.location:
         newIndex = 1;
+        break;
+        case BottomItem.profile:
+        newIndex = 2;
         break;
     }
     emit(state.copyWith(navbarItem: item, index: newIndex));
