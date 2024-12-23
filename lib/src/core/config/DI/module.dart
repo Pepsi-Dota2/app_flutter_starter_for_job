@@ -1,4 +1,3 @@
-import 'package:app_flutter_starter_for_job/src/core/interceptor/interceptor.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,7 +16,6 @@ abstract class InjectableModule {
     dio.options.connectTimeout = const Duration(seconds: 30 * 1);
     dio.options.receiveTimeout = const Duration(seconds: 30 * 1);
     dio.options.sendTimeout = const Duration(seconds: 30 * 1);
-    dio.interceptors.add(FirebaseTokenInterceptor(dio));
     return dio;
   }
 

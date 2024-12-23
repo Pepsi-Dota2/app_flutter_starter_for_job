@@ -18,10 +18,22 @@ import 'package:app_flutter_starter_for_job/src/module/home/data/datasource/loca
     as _i616;
 import 'package:app_flutter_starter_for_job/src/module/home/data/datasource/remote_datasource.dart'
     as _i622;
+import 'package:app_flutter_starter_for_job/src/module/home/data/repository/category_repository_impl.dart'
+    as _i549;
+import 'package:app_flutter_starter_for_job/src/module/home/data/repository/get_all_product_repository_impl.dart'
+    as _i446;
 import 'package:app_flutter_starter_for_job/src/module/home/data/repository/production_repository_impl.dart'
     as _i1000;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/all_product_repository.dart'
+    as _i854;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/category_repository.dart'
+    as _i490;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/product_repository.dart'
     as _i697;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/category_usecase.dart'
+    as _i1054;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/get_all_product_usecase.dart'
+    as _i715;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart'
     as _i797;
 import 'package:app_flutter_starter_for_job/src/module/login/data/datasource/login_local_datasource.dart'
@@ -96,14 +108,24 @@ extension GetItInjectableX on _i174.GetIt {
         profileRemoteDatasource: gh<_i215.ProfileRemoteDatasource>()));
     gh.lazySingleton<_i709.LogoutUseCase>(() =>
         _i709.LogoutUseCase(logoutRepository: gh<_i796.LogoutRepository>()));
+    gh.lazySingleton<_i854.GetAllProductRepository>(() =>
+        _i446.GetAllProductRepositoryImpl(
+            remoteDatasource: gh<_i622.RemoteDatasource>()));
     gh.lazySingleton<_i1062.LoginRepository>(() => _i32.LoginRepositoryImpl(
           gh<_i723.LoginLocalDatasource>(),
           loginRemoteDatasource: gh<_i1011.LoginRemoteDatasource>(),
         ));
+    gh.lazySingleton<_i490.CategoryRepository>(() =>
+        _i549.CategoryRepositoryImpl(
+            remoteDatasource: gh<_i622.RemoteDatasource>()));
+    gh.lazySingleton<_i715.GetAllProductUseCase>(
+        () => _i715.GetAllProductUseCase(gh<_i854.GetAllProductRepository>()));
     gh.lazySingleton<_i406.LoginUseCase>(
         () => _i406.LoginUseCase(gh<_i1062.LoginRepository>()));
     gh.lazySingleton<_i797.ProductUseCase>(
         () => _i797.ProductUseCase(gh<_i697.ProductRepository>()));
+    gh.lazySingleton<_i1054.CategoryUsecase>(
+        () => _i1054.CategoryUsecase(gh<_i490.CategoryRepository>()));
     return this;
   }
 }

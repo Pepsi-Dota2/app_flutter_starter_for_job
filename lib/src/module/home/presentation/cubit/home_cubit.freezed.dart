@@ -21,7 +21,11 @@ mixin _$HomeState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(List<GetProductModel> data) success,
+    required TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +33,11 @@ mixin _$HomeState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(List<GetProductModel> data)? success,
+    TResult? Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +45,11 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(List<GetProductModel> data)? success,
+    TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +144,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(List<GetProductModel> data) success,
+    required TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)
+        success,
   }) {
     return initial();
   }
@@ -143,7 +159,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(List<GetProductModel> data)? success,
+    TResult? Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
   }) {
     return initial?.call();
   }
@@ -154,7 +174,11 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(List<GetProductModel> data)? success,
+    TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -249,7 +273,11 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(List<GetProductModel> data) success,
+    required TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)
+        success,
   }) {
     return loading();
   }
@@ -260,7 +288,11 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(List<GetProductModel> data)? success,
+    TResult? Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
   }) {
     return loading?.call();
   }
@@ -271,7 +303,11 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(List<GetProductModel> data)? success,
+    TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -393,7 +429,11 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(List<GetProductModel> data) success,
+    required TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)
+        success,
   }) {
     return error(message);
   }
@@ -404,7 +444,11 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(List<GetProductModel> data)? success,
+    TResult? Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
   }) {
     return error?.call(message);
   }
@@ -415,7 +459,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(List<GetProductModel> data)? success,
+    TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -480,7 +528,10 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<GetProductModel> data});
+  $Res call(
+      {List<GetProductModel> data,
+      List<CategoryModel> categoryData,
+      List<GetProductionModel> getAllProduction});
 }
 
 /// @nodoc
@@ -497,12 +548,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? categoryData = null,
+    Object? getAllProduction = null,
   }) {
     return _then(_$SuccessImpl(
-      null == data
+      data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<GetProductModel>,
+      categoryData: null == categoryData
+          ? _value._categoryData
+          : categoryData // ignore: cast_nullable_to_non_nullable
+              as List<CategoryModel>,
+      getAllProduction: null == getAllProduction
+          ? _value._getAllProduction
+          : getAllProduction // ignore: cast_nullable_to_non_nullable
+              as List<GetProductionModel>,
     ));
   }
 }
@@ -510,19 +571,45 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<GetProductModel> data) : _data = data;
+  const _$SuccessImpl(
+      {final List<GetProductModel> data = const [],
+      final List<CategoryModel> categoryData = const [],
+      final List<GetProductionModel> getAllProduction = const []})
+      : _data = data,
+        _categoryData = categoryData,
+        _getAllProduction = getAllProduction;
 
   final List<GetProductModel> _data;
   @override
+  @JsonKey()
   List<GetProductModel> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
   }
 
+  final List<CategoryModel> _categoryData;
+  @override
+  @JsonKey()
+  List<CategoryModel> get categoryData {
+    if (_categoryData is EqualUnmodifiableListView) return _categoryData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categoryData);
+  }
+
+  final List<GetProductionModel> _getAllProduction;
+  @override
+  @JsonKey()
+  List<GetProductionModel> get getAllProduction {
+    if (_getAllProduction is EqualUnmodifiableListView)
+      return _getAllProduction;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_getAllProduction);
+  }
+
   @override
   String toString() {
-    return 'HomeState.success(data: $data)';
+    return 'HomeState.success(data: $data, categoryData: $categoryData, getAllProduction: $getAllProduction)';
   }
 
   @override
@@ -530,12 +617,19 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            const DeepCollectionEquality()
+                .equals(other._categoryData, _categoryData) &&
+            const DeepCollectionEquality()
+                .equals(other._getAllProduction, _getAllProduction));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_data),
+      const DeepCollectionEquality().hash(_categoryData),
+      const DeepCollectionEquality().hash(_getAllProduction));
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -551,9 +645,13 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(List<GetProductModel> data) success,
+    required TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)
+        success,
   }) {
-    return success(data);
+    return success(data, categoryData, getAllProduction);
   }
 
   @override
@@ -562,9 +660,13 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(List<GetProductModel> data)? success,
+    TResult? Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
   }) {
-    return success?.call(data);
+    return success?.call(data, categoryData, getAllProduction);
   }
 
   @override
@@ -573,11 +675,15 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(List<GetProductModel> data)? success,
+    TResult Function(
+            List<GetProductModel> data,
+            List<CategoryModel> categoryData,
+            List<GetProductionModel> getAllProduction)?
+        success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(data, categoryData, getAllProduction);
     }
     return orElse();
   }
@@ -621,9 +727,14 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements HomeState {
-  const factory _Success(final List<GetProductModel> data) = _$SuccessImpl;
+  const factory _Success(
+      {final List<GetProductModel> data,
+      final List<CategoryModel> categoryData,
+      final List<GetProductionModel> getAllProduction}) = _$SuccessImpl;
 
   List<GetProductModel> get data;
+  List<CategoryModel> get categoryData;
+  List<GetProductionModel> get getAllProduction;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

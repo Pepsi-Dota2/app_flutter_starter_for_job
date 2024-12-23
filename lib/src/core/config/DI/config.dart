@@ -1,6 +1,8 @@
 import 'package:app_flutter_starter_for_job/firebase_options.dart';
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.config.dart';
 import 'package:app_flutter_starter_for_job/src/core/config/observe.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/category_usecase.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/get_all_product_usecase.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
@@ -22,7 +24,7 @@ Future<GetIt> configureDependencies() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = SimpleBlocObserver();
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<ProductUseCase>()));
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<ProductUseCase>() , getIt<CategoryUsecase>() , getIt<GetAllProductUseCase>() ));
   getIt.registerFactory<DashboardCubit>(() => DashboardCubit());
   getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt<ProfileUseCase>(), getIt<LogoutUseCase>()));
   return getIt.init();
