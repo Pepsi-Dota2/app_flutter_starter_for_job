@@ -74,6 +74,8 @@ class ProductWidget extends StatelessWidget {
                 children: [
                   Text(
                     title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 12,

@@ -14,13 +14,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<HomeCubit>()
-        ..getCategories()
-        // ..getPhotos()
-        ..getAllProduct(),
-      child: this,
-    );
+    return this;
   }
 
   @override

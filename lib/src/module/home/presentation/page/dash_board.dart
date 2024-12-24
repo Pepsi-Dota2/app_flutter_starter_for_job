@@ -21,8 +21,11 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<HomeCubit>()..getAllProduct()..getCategories(),
+          create: (context) => getIt<HomeCubit>()..getAllProduct(),
         ),
+        // BlocProvider(
+        //   create: (context) => getIt<HomeCubit>()..getCategories(),
+        // ),
         BlocProvider(
           create: (context) => getIt<DashboardCubit>(),
         ),
@@ -45,7 +48,7 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
         },
-        children: const [HomePage(),LocationPage(), ProfilePage() ],
+        children: const [HomePage(), LocationPage(), ProfilePage()],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {

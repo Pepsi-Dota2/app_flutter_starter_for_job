@@ -18,7 +18,7 @@ abstract class AppApi {
   Future<List<GetProductModel>> getProduct();
 
   @GET(ApiPath.getCategory)
-  Future<List<CategoryModel>> getCategory();  
+  Future<List<CategoryModel>> getCategory();
 
   @GET(ApiPath.getProducts)
   Future<List<GetProductionModel>> getAllProduct();
