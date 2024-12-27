@@ -28,10 +28,14 @@ import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/al
     as _i854;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/category_repository.dart'
     as _i490;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/filter_product_repository.dart'
+    as _i1069;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/repository/product_repository.dart'
     as _i697;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/category_usecase.dart'
     as _i1054;
+import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/filter_product_usecase.dart'
+    as _i944;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/get_all_product_usecase.dart'
     as _i715;
 import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart'
@@ -83,6 +87,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => injectableModule.secureStorage);
     gh.lazySingleton<_i59.FirebaseAuth>(() => injectableModule.firebaseAuth);
     gh.lazySingleton<_i361.Dio>(() => injectableModule.dio());
+    gh.lazySingleton<_i944.FilterProductUseCase>(
+        () => _i944.FilterProductUseCase(gh<_i1069.FilterProductRepository>()));
     gh.lazySingleton<_i723.LoginLocalDatasource>(
         () => _i723.LoginLocalDatasourceImpl());
     gh.lazySingleton<_i616.LocalDatasource>(

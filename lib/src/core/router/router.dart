@@ -1,5 +1,7 @@
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/dash_board.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detial_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/search/search_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/login_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/notification.dart';
@@ -17,5 +19,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: DashBoardRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: LocationRoute.page),
+        AutoRoute(page: DetailProductRoute.page),
+        AutoRoute(page: SearchRoute.page),
       ];
 }

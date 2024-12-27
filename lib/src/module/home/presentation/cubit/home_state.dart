@@ -8,6 +8,8 @@ class HomeState with _$HomeState {
   const factory HomeState.success({
     @Default([]) List<GetProductModel> data,
     @Default([]) List<CategoryModel> categoryData,
-    @Default([]) List<GetProductionModel> getAllProduction
+    @Default([]) List<GetProductionModel> getAllProduction,
+    @Default("") String? selectedPaymentMethod,
+    @Default("") String? selectedBank,
   }) = _Success;
 }

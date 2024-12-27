@@ -24,7 +24,9 @@ mixin _$HomeState {
     required TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)
         success,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +38,9 @@ mixin _$HomeState {
     TResult? Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,7 +52,9 @@ mixin _$HomeState {
     TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
     required TResult orElse(),
   }) =>
@@ -147,7 +153,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)
         success,
   }) {
     return initial();
@@ -162,7 +170,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
   }) {
     return initial?.call();
@@ -177,7 +187,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
     required TResult orElse(),
   }) {
@@ -276,7 +288,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)
         success,
   }) {
     return loading();
@@ -291,7 +305,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
   }) {
     return loading?.call();
@@ -306,7 +322,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
     required TResult orElse(),
   }) {
@@ -432,7 +450,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)
         success,
   }) {
     return error(message);
@@ -447,7 +467,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
   }) {
     return error?.call(message);
@@ -462,7 +484,9 @@ class _$ErrorImpl implements _Error {
     TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
     required TResult orElse(),
   }) {
@@ -531,7 +555,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   $Res call(
       {List<GetProductModel> data,
       List<CategoryModel> categoryData,
-      List<GetProductionModel> getAllProduction});
+      List<GetProductionModel> getAllProduction,
+      String? selectedPaymentMethod,
+      String? selectedBank});
 }
 
 /// @nodoc
@@ -550,6 +576,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
     Object? data = null,
     Object? categoryData = null,
     Object? getAllProduction = null,
+    Object? selectedPaymentMethod = freezed,
+    Object? selectedBank = freezed,
   }) {
     return _then(_$SuccessImpl(
       data: null == data
@@ -564,6 +592,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
           ? _value._getAllProduction
           : getAllProduction // ignore: cast_nullable_to_non_nullable
               as List<GetProductionModel>,
+      selectedPaymentMethod: freezed == selectedPaymentMethod
+          ? _value.selectedPaymentMethod
+          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedBank: freezed == selectedBank
+          ? _value.selectedBank
+          : selectedBank // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -574,7 +610,9 @@ class _$SuccessImpl implements _Success {
   const _$SuccessImpl(
       {final List<GetProductModel> data = const [],
       final List<CategoryModel> categoryData = const [],
-      final List<GetProductionModel> getAllProduction = const []})
+      final List<GetProductionModel> getAllProduction = const [],
+      this.selectedPaymentMethod = "",
+      this.selectedBank = ""})
       : _data = data,
         _categoryData = categoryData,
         _getAllProduction = getAllProduction;
@@ -608,8 +646,15 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
+  @JsonKey()
+  final String? selectedPaymentMethod;
+  @override
+  @JsonKey()
+  final String? selectedBank;
+
+  @override
   String toString() {
-    return 'HomeState.success(data: $data, categoryData: $categoryData, getAllProduction: $getAllProduction)';
+    return 'HomeState.success(data: $data, categoryData: $categoryData, getAllProduction: $getAllProduction, selectedPaymentMethod: $selectedPaymentMethod, selectedBank: $selectedBank)';
   }
 
   @override
@@ -621,7 +666,11 @@ class _$SuccessImpl implements _Success {
             const DeepCollectionEquality()
                 .equals(other._categoryData, _categoryData) &&
             const DeepCollectionEquality()
-                .equals(other._getAllProduction, _getAllProduction));
+                .equals(other._getAllProduction, _getAllProduction) &&
+            (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
+                other.selectedPaymentMethod == selectedPaymentMethod) &&
+            (identical(other.selectedBank, selectedBank) ||
+                other.selectedBank == selectedBank));
   }
 
   @override
@@ -629,7 +678,9 @@ class _$SuccessImpl implements _Success {
       runtimeType,
       const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(_categoryData),
-      const DeepCollectionEquality().hash(_getAllProduction));
+      const DeepCollectionEquality().hash(_getAllProduction),
+      selectedPaymentMethod,
+      selectedBank);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -648,10 +699,13 @@ class _$SuccessImpl implements _Success {
     required TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)
         success,
   }) {
-    return success(data, categoryData, getAllProduction);
+    return success(data, categoryData, getAllProduction, selectedPaymentMethod,
+        selectedBank);
   }
 
   @override
@@ -663,10 +717,13 @@ class _$SuccessImpl implements _Success {
     TResult? Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
   }) {
-    return success?.call(data, categoryData, getAllProduction);
+    return success?.call(data, categoryData, getAllProduction,
+        selectedPaymentMethod, selectedBank);
   }
 
   @override
@@ -678,12 +735,15 @@ class _$SuccessImpl implements _Success {
     TResult Function(
             List<GetProductModel> data,
             List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction)?
+            List<GetProductionModel> getAllProduction,
+            String? selectedPaymentMethod,
+            String? selectedBank)?
         success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data, categoryData, getAllProduction);
+      return success(data, categoryData, getAllProduction,
+          selectedPaymentMethod, selectedBank);
     }
     return orElse();
   }
@@ -730,11 +790,15 @@ abstract class _Success implements HomeState {
   const factory _Success(
       {final List<GetProductModel> data,
       final List<CategoryModel> categoryData,
-      final List<GetProductionModel> getAllProduction}) = _$SuccessImpl;
+      final List<GetProductionModel> getAllProduction,
+      final String? selectedPaymentMethod,
+      final String? selectedBank}) = _$SuccessImpl;
 
   List<GetProductModel> get data;
   List<CategoryModel> get categoryData;
   List<GetProductionModel> get getAllProduction;
+  String? get selectedPaymentMethod;
+  String? get selectedBank;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

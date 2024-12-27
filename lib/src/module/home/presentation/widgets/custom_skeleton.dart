@@ -7,13 +7,12 @@ class CustomSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
-      // Skeletonizer wraps the entire ListView to animate the loading effect
       child: ListView.builder(
         itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-            elevation: 4,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
