@@ -24,6 +24,15 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: IconButton(
+              icon: const Icon(Icons.notifications_outlined , size: 26,),
+              onPressed: () {},
+            ),
+          ),
+        ],
       ),
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {

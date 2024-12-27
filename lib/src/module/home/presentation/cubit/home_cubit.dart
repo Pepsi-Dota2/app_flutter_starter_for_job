@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/core/service/notification/notification.dart';
 import 'package:app_flutter_starter_for_job/src/core/usecase/use_case.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/category_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/get_product_model.dart';
@@ -13,7 +14,7 @@ part 'home_cubit.freezed.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final ProductUseCase _productUseCase;
-  final CategoryUsecase _categoryUsecase;
+  final CategoryUseCase _categoryUsecase;
   final GetAllProductUseCase _getAllProductUseCase;
   HomeCubit(this._productUseCase, this._categoryUsecase, this._getAllProductUseCase) : super(HomeState.initial());
 

@@ -2,6 +2,7 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/da
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/login_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/notification.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

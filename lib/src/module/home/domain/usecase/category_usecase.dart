@@ -6,10 +6,10 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class CategoryUsecase extends UseCase<List<CategoryModel> , NoParams> {
+class CategoryUseCase extends UseCase<List<CategoryModel> , NoParams> {
   final CategoryRepository _categoryRepository;
 
-  CategoryUsecase(this._categoryRepository);
+  CategoryUseCase(this._categoryRepository);
 
   @override
   Future<Either<Failure, List<CategoryModel>>> call(NoParams params) => _categoryRepository.getCategories();

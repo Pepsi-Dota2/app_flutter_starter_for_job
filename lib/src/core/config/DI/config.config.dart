@@ -124,8 +124,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i406.LoginUseCase(gh<_i1062.LoginRepository>()));
     gh.lazySingleton<_i797.ProductUseCase>(
         () => _i797.ProductUseCase(gh<_i697.ProductRepository>()));
-    gh.lazySingleton<_i1054.CategoryUsecase>(
-        () => _i1054.CategoryUsecase(gh<_i490.CategoryRepository>()));
+    gh.lazySingleton<_i1054.CategoryUseCase>(
+        () => _i1054.CategoryUseCase(gh<_i490.CategoryRepository>()));
     return this;
   }
 }
