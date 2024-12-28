@@ -21,13 +21,16 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Payment Method"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(),
               const SizedBox(height: 20),
               _buildBankTransferSection(),
               const SizedBox(height: 16),
@@ -36,25 +39,6 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back_ios, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          'Payment',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
     );
   }
 
@@ -79,7 +63,7 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
                 ),
               ),
               Transform.rotate(
-                angle: isBankTransferExpanded ? -1.57 : 0, 
+                angle: isBankTransferExpanded ? -1.57 : 0,
                 child: Icon(
                   Icons.arrow_forward_ios,
                   size: 16,

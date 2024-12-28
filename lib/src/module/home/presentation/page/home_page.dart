@@ -1,4 +1,6 @@
+import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
+import 'package:app_flutter_starter_for_job/src/core/utils/custom_solution_break_character.dart';
 import 'package:app_flutter_starter_for_job/src/core/utils/image_parser.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/carousel_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
@@ -68,55 +70,61 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                         ),
                         const SizedBox(height: 16),
                         SizedBox(
-                          height: size.height * 0.12,
+                          height: size.height * 0.1,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: categoryData.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(16),
-                                        child: Image.network(
-                                          categoryData[index].image,
-                                          fit: BoxFit.cover,
-                                          width: size.width * 0.22,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                            return Container(
-                                              width: size.width * 0.24,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/nike-kyrie-7-fire-ice-sneakerroom-do5360-900-release-date.webp"),
-                                                  fit: BoxFit.cover,
+                              return Container(
+                                width: size.width * 0.52,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.grey.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(16),
+                                          child: Image.network(
+                                            categoryData[index].image,
+                                            fit: BoxFit.cover,
+                                            width: size.width * 0.22,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Container(
+                                                width: size.width * 0.24,
+                                                decoration: const BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/images/nike-kyrie-7-fire-ice-sneakerroom-do5360-900-release-date.webp"),
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 6),
-                                        child: Text(
-                                          categoryData[index].name,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                            color: Colors.black87,
+                                              );
+                                            },
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
-                                      ),
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 6),
+                                          child: Text(
+                                            TextUtil.wrapText(categoryData[index].name ,8),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                              color: Colors.black87,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
