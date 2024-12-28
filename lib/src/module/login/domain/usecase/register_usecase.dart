@@ -12,13 +12,13 @@ part 'register_usecase.freezed.dart';
 part 'register_usecase.g.dart';
 
 @lazySingleton
-class RegisterUseCase extends UseCase<User, RegisterParams> {
+class RegisterUseCase extends UseCase<UserCredential, RegisterParams> {
   final RegisterRepository _repo;
 
   RegisterUseCase(this._repo);
 
   @override
-  Future<Either<Failure, User>> call(RegisterParams params) =>
+  Future<Either<Failure, UserCredential>> call(RegisterParams params) =>
       _repo.userRegister(params);
 }
 

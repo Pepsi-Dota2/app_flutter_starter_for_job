@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
     );
   }
 
-  final emailController = TextEditingController();
+  final usernameController = TextEditingController();
   final pwdController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -54,19 +54,29 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextInput(controller: emailController, hintText: "example@gmail.com", header: "Email"),
+                    TextInput(controller: usernameController, hintText: "example@gmail.com", header: "Email"),
                     const SizedBox(height: 12),
                     PasswordInput(controller: pwdController, hintText: "***********", header: "Password"),
                     const SizedBox(height: 30),
                     RadiusButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate() != false) {
-                          final email = emailController.text.trim();
+                          final email = usernameController.text.trim();
                           final pwd = pwdController.text.trim();
                           context.read<LoginCubit>().userLogin(email: email, password: pwd);
                         }
                       },
                       title: "Sign In",
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                        TextButton(onPressed: () {
+                          context.router.replace(RegisterRoute());
+                        }, child: const Text("Sign Up"))
+                      ],
                     )
                   ],
                 ),

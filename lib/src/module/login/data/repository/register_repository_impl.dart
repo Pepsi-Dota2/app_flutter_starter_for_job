@@ -14,12 +14,12 @@ class RegisterRepositoryImpl implements RegisterRepository {
 
   RegisterRepositoryImpl(this._loginLocalDatasource, {required LoginRemoteDatasource loginRemoteDatasource}) : _loginRemoteDatasource = loginRemoteDatasource;
   @override
-  Future<Either<Failure, User>> userRegister(RegisterParams params) async {
+  Future<Either<Failure, UserCredential>> userRegister(RegisterParams params) async {
     final response = await _loginRemoteDatasource.userRegister(params);
     return response.fold(
       (failure) => Left(failure),
       (res) async {
-        await _loginLocalDatasource.saveUser(uid: res.uid);
+        await _loginLocalDatasource.saveUser(uid:  res.user?.uid ?? "");
         return Right(res);
       },
     );

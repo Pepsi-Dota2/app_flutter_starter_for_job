@@ -103,19 +103,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       RadiusButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            final username = emailController.text
-                                .trim(); // Update to use usernameController
                             final email = emailController.text.trim();
                             final password = pwdController.text.trim();
 
                             context.read<LoginCubit>().userRegister(
                                   email: email,
                                   password: password,
-                                  username: username,
-                                  verificationId:
-                                      "verificationId", // Replace with actual value
-                                  smsCode:
-                                      "123456", // Replace with actual value
                                 );
                           }
                         },
