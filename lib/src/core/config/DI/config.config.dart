@@ -44,12 +44,18 @@ import 'package:app_flutter_starter_for_job/src/module/login/data/datasource/log
     as _i723;
 import 'package:app_flutter_starter_for_job/src/module/login/data/datasource/remote_login_datasource.dart'
     as _i1011;
+import 'package:app_flutter_starter_for_job/src/module/login/data/repository/register_repository_impl.dart'
+    as _i40;
 import 'package:app_flutter_starter_for_job/src/module/login/data/repository/repository_impl.dart'
     as _i32;
+import 'package:app_flutter_starter_for_job/src/module/login/domain/repository/register_repository.dart'
+    as _i1035;
 import 'package:app_flutter_starter_for_job/src/module/login/domain/repository/repository.dart'
     as _i1062;
 import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/login_usecase.dart'
     as _i406;
+import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/register_usecase.dart'
+    as _i713;
 import 'package:app_flutter_starter_for_job/src/module/profile/data/datasource/profile_remote_datasource.dart'
     as _i215;
 import 'package:app_flutter_starter_for_job/src/module/profile/data/repository/logout_repository_impl.dart'
@@ -64,6 +70,7 @@ import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/lo
     as _i709;
 import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/profile_usecase.dart'
     as _i571;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
@@ -86,6 +93,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
         () => injectableModule.secureStorage);
     gh.lazySingleton<_i59.FirebaseAuth>(() => injectableModule.firebaseAuth);
+    gh.lazySingleton<_i974.FirebaseFirestore>(
+        () => injectableModule.firebaseFirestore);
     gh.lazySingleton<_i361.Dio>(() => injectableModule.dio());
     gh.lazySingleton<_i944.FilterProductUseCase>(
         () => _i944.FilterProductUseCase(gh<_i1069.FilterProductRepository>()));
@@ -114,6 +123,11 @@ extension GetItInjectableX on _i174.GetIt {
         profileRemoteDatasource: gh<_i215.ProfileRemoteDatasource>()));
     gh.lazySingleton<_i709.LogoutUseCase>(() =>
         _i709.LogoutUseCase(logoutRepository: gh<_i796.LogoutRepository>()));
+    gh.lazySingleton<_i1035.RegisterRepository>(
+        () => _i40.RegisterRepositoryImpl(
+              gh<_i723.LoginLocalDatasource>(),
+              loginRemoteDatasource: gh<_i1011.LoginRemoteDatasource>(),
+            ));
     gh.lazySingleton<_i854.GetAllProductRepository>(() =>
         _i446.GetAllProductRepositoryImpl(
             remoteDatasource: gh<_i622.RemoteDatasource>()));
@@ -130,6 +144,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i406.LoginUseCase(gh<_i1062.LoginRepository>()));
     gh.lazySingleton<_i797.ProductUseCase>(
         () => _i797.ProductUseCase(gh<_i697.ProductRepository>()));
+    gh.lazySingleton<_i713.RegisterUseCase>(
+        () => _i713.RegisterUseCase(gh<_i1035.RegisterRepository>()));
     gh.lazySingleton<_i1054.CategoryUseCase>(
         () => _i1054.CategoryUseCase(gh<_i490.CategoryRepository>()));
     return this;

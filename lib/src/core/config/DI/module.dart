@@ -1,4 +1,5 @@
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -24,5 +25,8 @@ abstract class InjectableModule {
 
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
+  @lazySingleton
+  FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance;
 
 }
