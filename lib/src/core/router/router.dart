@@ -1,5 +1,5 @@
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/dash_board.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detial_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/search/search_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';

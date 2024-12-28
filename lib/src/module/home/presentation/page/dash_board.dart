@@ -21,11 +21,8 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<HomeCubit>()..getAllProduct(),
+          create: (context) => getIt<HomeCubit>()..fetchData(),
         ),
-        // BlocProvider(
-        //   create: (context) => getIt<HomeCubit>()..initializeNotification(),
-        // ),
         BlocProvider(
           create: (context) => getIt<DashboardCubit>(),
         ),

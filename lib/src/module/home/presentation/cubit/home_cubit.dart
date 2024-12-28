@@ -16,7 +16,9 @@ class HomeCubit extends Cubit<HomeState> {
   final ProductUseCase _productUseCase;
   final CategoryUseCase _categoryUsecase;
   final GetAllProductUseCase _getAllProductUseCase;
-  HomeCubit(this._productUseCase, this._categoryUsecase, this._getAllProductUseCase) : super(HomeState.initial());
+  HomeCubit(
+      this._productUseCase, this._categoryUsecase, this._getAllProductUseCase)
+      : super(HomeState.initial());
 
   Future<void> getPhotos() async {
     emit(HomeState.loading());
@@ -28,7 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
           if (product.isEmpty) {
             emit(const HomeState.error('No data available'));
           } else {
-            emit(HomeState.success(data: product , categoryData: []));
+            emit(HomeState.success(data: product, categoryData: []));
           }
         },
       );
@@ -47,7 +49,7 @@ class HomeCubit extends Cubit<HomeState> {
           if (category.isEmpty) {
             emit(const HomeState.error('No data available'));
           } else {
-            emit(HomeState.success(categoryData: category , data: []));
+            emit(HomeState.success(categoryData: category, data: []));
           }
         },
       );
@@ -56,7 +58,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> getAllProduct() async{
+  Future<void> getAllProduct() async {
     emit(HomeState.loading());
     try {
       final result = await _getAllProductUseCase.call(NoParams());
@@ -66,7 +68,43 @@ class HomeCubit extends Cubit<HomeState> {
           if (getAllProduct.isEmpty) {
             emit(const HomeState.error('No data available'));
           } else {
-            emit(HomeState.success(data: [] , categoryData: [] , getAllProduction: getAllProduct));
+            emit(HomeState.success(
+                data: [], categoryData: [], getAllProduction: getAllProduct));
+          }
+        },
+      );
+    } catch (e) {
+      emit(HomeState.error(e.toString()));
+    }
+  }
+
+  Future<void> fetchData() async {
+    emit(HomeState.loading());
+
+    try {
+      final categoriesResult = await _categoryUsecase.call(NoParams());
+      final productsResult = await _getAllProductUseCase.call(NoParams());
+
+      categoriesResult.fold(
+        (error) => emit(HomeState.error(error.message)),
+        (categories) async {
+          if (categories.isEmpty) {
+            emit(const HomeState.error('No categories available'));
+          } else {
+            productsResult.fold(
+              (error) => emit(HomeState.error(error.message)),
+              (products) {
+                if (products.isEmpty) {
+                  emit(const HomeState.error('No products available'));
+                } else {
+                  emit(HomeState.success(
+                    categoryData: categories,
+                    getAllProduction: products,
+                    data: [],
+                  ));
+                }
+              },
+            );
           }
         },
       );

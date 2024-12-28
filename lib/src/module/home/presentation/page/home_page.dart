@@ -1,7 +1,8 @@
-import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:app_flutter_starter_for_job/src/core/utils/image_parser.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/domain/model/carousel_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/carousel.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/custom_skeleton.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_widget.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/search_bar.dart';
@@ -47,7 +48,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
             error: (error) => Center(
               child: Text('Error: $error'),
             ),
-            success: (data, categoryData, product , onSelectBank , selectPaymentMethod ) {
+            success: (data, categoryData, product, onSelectBank,
+                selectPaymentMethod) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -59,6 +61,10 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                           onSearchTap: () {
                             context.router.push(SearchRoute());
                           },
+                        ),
+                        const SizedBox(height: 16),
+                        CarouselWidget(
+                          items: CarouselModel.items,
                         ),
                         const SizedBox(height: 16),
                         SizedBox(
@@ -98,7 +104,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 6),
                                         child: Text(
                                           categoryData[index].name,
                                           style: const TextStyle(
@@ -129,7 +136,8 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                           ),
                           itemCount: product.length,
                           itemBuilder: (BuildContext context, int index) {
-                            String imageUrl = ImageUrlParser.parseImageUrl(product[index].images[0]);
+                            String imageUrl = ImageUrlParser.parseImageUrl(
+                                product[index].images[0]);
                             return InkWell(
                               onTap: () {
                                 context.router.push(DetailProductRoute(
@@ -138,7 +146,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                   location: "laos",
                                   imageUrl: imageUrl,
                                   price: product[index].price.toDouble(),
-                                  followerCount:"20",
+                                  followerCount: "20",
                                   itemCount: "20",
                                 ));
                               },

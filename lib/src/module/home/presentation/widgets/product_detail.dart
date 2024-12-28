@@ -1,4 +1,5 @@
-import 'package:app_flutter_starter_for_job/src/core/utils/custom_solution_break_character_util.dart';
+
+import 'package:app_flutter_starter_for_job/src/core/utils/custom_solution_break_character.dart';
 import 'package:flutter/material.dart';
 
 class ProductCardDetail extends StatelessWidget {
