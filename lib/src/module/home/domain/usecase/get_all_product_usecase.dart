@@ -9,10 +9,16 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/error/failures.dart';
 
 @lazySingleton
-class GetAllProductUseCase extends UseCase<List<GetProductionModel> , NoParams> {
+class GetAllProductUseCase extends UseCase<List<GetProductionModel> , Pagination> {
   final GetAllProductRepository _getAllProductRepository;
   GetAllProductUseCase(this._getAllProductRepository);
 
   @override
-  Future<Either<Failure , List<GetProductionModel>>> call(NoParams params) => _getAllProductRepository.getAllProduct();
+  Future<Either<Failure , List<GetProductionModel>>> call(Pagination pagination) => _getAllProductRepository.getAllProduct(pagination);
+}
+
+class Pagination {
+  final int limit;
+  final int offset;
+  Pagination({required this.limit, required this.offset});  
 }

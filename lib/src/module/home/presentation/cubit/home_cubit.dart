@@ -58,32 +58,32 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> getAllProduct() async {
-    emit(HomeState.loading());
-    try {
-      final result = await _getAllProductUseCase.call(NoParams());
-      result.fold(
-        (error) => emit(HomeState.error(error.message)),
-        (getAllProduct) {
-          if (getAllProduct.isEmpty) {
-            emit(const HomeState.error('No data available'));
-          } else {
-            emit(HomeState.success(
-                data: [], categoryData: [], getAllProduction: getAllProduct));
-          }
-        },
-      );
-    } catch (e) {
-      emit(HomeState.error(e.toString()));
-    }
-  }
+  // Future<void> getAllProduct() async {
+  //   emit(HomeState.loading());
+  //   try {
+  //     final result = await _getAllProductUseCase.call(NoParams());
+  //     result.fold(
+  //       (error) => emit(HomeState.error(error.message)),
+  //       (getAllProduct) {
+  //         if (getAllProduct.isEmpty) {
+  //           emit(const HomeState.error('No data available'));
+  //         } else {
+  //           emit(HomeState.success(
+  //               data: [], categoryData: [], getAllProduction: getAllProduct));
+  //         }
+  //       },
+  //     );
+  //   } catch (e) {
+  //     emit(HomeState.error(e.toString()));
+  //   }
+  // }
 
   Future<void> fetchData() async {
     emit(HomeState.loading());
 
     try {
       final categoriesResult = await _categoryUsecase.call(NoParams());
-      final productsResult = await _getAllProductUseCase.call(NoParams());
+      final productsResult = await _getAllProductUseCase.call(Pagination(limit: 20, offset: 0));
 
       categoriesResult.fold(
         (error) => emit(HomeState.error(error.message)),

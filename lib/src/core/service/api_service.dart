@@ -21,5 +21,8 @@ abstract class AppApi {
   Future<List<CategoryModel>> getCategory();
 
   @GET(ApiPath.getProducts)
-  Future<List<GetProductionModel>> getAllProduct();
+  Future<List<GetProductionModel>> getAllProduct(
+    @Query('limit') int limit,
+    @Query('offset') int offset,
+  );
 }

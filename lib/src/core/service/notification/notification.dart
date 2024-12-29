@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -8,12 +7,12 @@ Future<void> handleBackGroundMessage(RemoteMessage? message) async {
 }
 
 class FirebaseApi {
-  final _firebaseMessing = FirebaseMessaging.instance;
+  final _firebaseMessaging = FirebaseMessaging.instance;
 
   final _androidChannel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
-    description: "merry christmas",
+    description: "This channel is for important notifications.",
     importance: Importance.defaultImportance,
     playSound: true,
   );
@@ -24,21 +23,17 @@ class FirebaseApi {
     if (message == null) return;
   }
 
-  Future initLocalNotification() async {
-    // const iOS = IOS();
+  Future<void> initLocalNotification() async {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     final settings = InitializationSettings(android: android);
 
     await _flutterLocalNotificationsPlugin.initialize(
       settings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        final payload = response.payload; 
-        print("#######################$payload");
+        final payload = response.payload;
         if (payload != null) {
           final message = RemoteMessage.fromMap(jsonDecode(payload));
           handleMessage(message);
-        } else {
-          print('No payload in notification response');
         }
       },
     );
@@ -49,9 +44,8 @@ class FirebaseApi {
     await platform?.createNotificationChannel(_androidChannel);
   }
 
-  Future initPushNotifications() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+  Future<void> initPushNotifications() async {
+    await _firebaseMessaging.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
@@ -68,11 +62,12 @@ class FirebaseApi {
         notification.body,
         NotificationDetails(
           android: AndroidNotificationDetails(
-              _androidChannel.id, _androidChannel.name,
-              channelDescription: _androidChannel.description,
-              playSound: _androidChannel.playSound,
-              sound: RawResourceAndroidNotificationSound('notification'),
-              icon: '@mipmap/ic_launcher'),
+            _androidChannel.id, 
+            _androidChannel.name,
+            channelDescription: _androidChannel.description,
+            playSound: _androidChannel.playSound,
+            icon: '@mipmap/ic_launcher',
+          ),
         ),
         payload: jsonEncode(message.toMap()),
       );
@@ -80,11 +75,13 @@ class FirebaseApi {
   }
 
   Future<void> initNotification() async {
-    await _firebaseMessing.requestPermission();
-    final fCMToken = await _firebaseMessing.getToken();
+    await _firebaseMessaging.requestPermission();
+    final fCMToken = await _firebaseMessaging.getToken();
+    final apnsToken = await _firebaseMessaging.getAPNSToken();
+    print("Firebase Token: $fCMToken");
+    print("APNs Token: $apnsToken");
 
-    // print('Token : $fCMToken');
-    initNotification();
-    initLocalNotification();
+    await initPushNotifications();
+    await initLocalNotification();
   }
 }
