@@ -45,7 +45,7 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
         },
-        children: const [HomePage(), LocationPage(), ProfilePage()],
+        children: [HomePage(), const LocationPage(), const ProfilePage()],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {

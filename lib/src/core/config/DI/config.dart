@@ -24,7 +24,7 @@ final getIt = GetIt.instance;
 Future<GetIt> configureDependencies() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseApi().initNotification();
+  // await FirebaseApi().initNotification();
   Bloc.observer = SimpleBlocObserver();
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>() , getIt<RegisterUseCase>()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<ProductUseCase>() , getIt<CategoryUseCase>() , getIt<GetAllProductUseCase>() ));

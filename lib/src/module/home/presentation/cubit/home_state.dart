@@ -11,5 +11,6 @@ class HomeState with _$HomeState {
     @Default([]) List<GetProductionModel> getAllProduction,
     @Default("") String? selectedPaymentMethod,
     @Default("") String? selectedBank,
+    @Default(true) bool hasMoreData,
   }) = _Success;
 }

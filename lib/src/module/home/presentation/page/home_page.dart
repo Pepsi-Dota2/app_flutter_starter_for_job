@@ -1,8 +1,10 @@
+import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:app_flutter_starter_for_job/src/core/utils/custom_solution_break_character.dart';
 import 'package:app_flutter_starter_for_job/src/core/utils/image_parser.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/carousel_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/domain/model/product_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/carousel.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/custom_skeleton.dart';
@@ -11,11 +13,13 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget implements AutoRouteWrapper {
-  const HomePage({super.key});
+  HomePage({super.key});
+   final PagingController<int, GetProductionModel> _pagingController = PagingController(firstPageKey: 0);
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -50,8 +54,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
             error: (error) => Center(
               child: Text('Error: $error'),
             ),
-            success: (data, categoryData, product, onSelectBank,
-                selectPaymentMethod) {
+            success: (data, categoryData, product, onSelectBank, selectPaymentMethod , hasmoreData) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
