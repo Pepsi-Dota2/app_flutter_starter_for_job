@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
     final Size size = MediaQuery.of(context).size;
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
-          state.maybeWhen(
+        state.maybeWhen(
             orElse: () => LoadingDialog.showLoadingDialog(context),
             success: (user) {
               LoadingDialog.hideLoadingDialog(context);
@@ -39,8 +39,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
             },
             failure: (failure) {
               LoadingDialog.hideLoadingDialog(context);
-            }
-          );
+            });
       },
       builder: (context, state) {
         return Scaffold(
@@ -54,30 +53,28 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextInput(controller: usernameController, hintText: "example@gmail.com", header: "Email"),
+                    TextInput(
+                        controller: usernameController,
+                        hintText: "example@gmail.com",
+                        header: "Email"),
                     const SizedBox(height: 12),
-                    PasswordInput(controller: pwdController, hintText: "***********", header: "Password"),
+                    PasswordInput(
+                        controller: pwdController,
+                        hintText: "***********",
+                        header: "Password"),
                     const SizedBox(height: 30),
                     RadiusButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate() != false) {
-                          final email = usernameController.text.trim();
+                          final username = usernameController.text.trim();
                           final pwd = pwdController.text.trim();
-                          context.read<LoginCubit>().userLogin(email: email, password: pwd);
+                          context
+                              .read<LoginCubit>()
+                              .userLogin(username: username, password: pwd);
                         }
                       },
                       title: "Sign In",
                     ),
-                    const SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Don't have an account?"),
-                        TextButton(onPressed: () {
-                          context.router.replace(RegisterRoute());
-                        }, child: const Text("Sign Up"))
-                      ],
-                    )
                   ],
                 ),
               ),

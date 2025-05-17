@@ -40,9 +40,4 @@ abstract class InjectableModule {
   @lazySingleton
   FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
 
-  @lazySingleton
-  FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
-
-  @lazySingleton
-  FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance;
 }

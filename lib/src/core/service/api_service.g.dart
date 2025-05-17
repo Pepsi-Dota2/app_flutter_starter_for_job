@@ -22,6 +22,40 @@ class _AppApi implements AppApi {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<AuthModel> login(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<AuthModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'http://183.182.125.198:1111/saleposlogin',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AuthModel _value;
+    try {
+      _value = AuthModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<GetProductModel>> getProduct() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -34,7 +68,7 @@ class _AppApi implements AppApi {
     )
         .compose(
           _dio.options,
-          'https://jsonplaceholder.typicode.com/photos',
+          'http://183.182.125.198:1111/photos',
           queryParameters: queryParameters,
           data: _data,
         )

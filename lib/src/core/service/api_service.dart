@@ -1,4 +1,5 @@
 import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
+import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/category_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/get_product_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/domain/model/product_model.dart';
@@ -13,6 +14,9 @@ part 'api_service.g.dart';
 abstract class AppApi {
   @factoryMethod
   factory AppApi(Dio dio) = _AppApi;
+
+  @POST(ApiPath.authLogin)
+  Future<AuthModel> login(@Body() Map<String, dynamic> body);
 
   @GET(ApiPath.getPhotos)
   Future<List<GetProductModel>> getProduct();

@@ -49,13 +49,13 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return state.when(
-            initial: () => CustomSkeleton(),
-            loading: () => CustomSkeleton(),
+            initial: () => Center(child: CircularProgressIndicator()),
+            loading: () => Skeletonizer(child: CustomSkeleton()),
             error: (error) => Center(
               child: Text('Error: $error'),
             ),
             success: (data, categoryData, product, onSelectBank, selectPaymentMethod , hasmoreData) {
-              return SingleChildScrollView(
+              return  SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: SafeArea(
