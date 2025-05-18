@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({super.key, this.user});
-  final User? user;
+  const ProfileWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class ProfileWidget extends StatelessWidget {
             "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
           ),
         ),
-        title:  Text("Email : ${user?.email ?? "No Email"}"),
-        subtitle:  Text("User Name : ${user?.displayName ?? "No name"}"),
+        title: Text("Email : pepsi"),
+        subtitle: Text("User Name : developer"),
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/carousel_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/carousel_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 

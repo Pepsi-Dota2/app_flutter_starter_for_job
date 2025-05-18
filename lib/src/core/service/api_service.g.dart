@@ -56,19 +56,20 @@ class _AppApi implements AppApi {
   }
 
   @override
-  Future<List<GetProductModel>> getProduct() async {
+  Future<PosStockModel> posStock(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<GetProductModel>>(Options(
-      method: 'GET',
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<PosStockModel>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'http://183.182.125.198:1111/photos',
+          'http://183.182.125.198:1111/pos/stock',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -77,90 +78,10 @@ class _AppApi implements AppApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<GetProductModel> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PosStockModel _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) =>
-              GetProductModel.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<List<CategoryModel>> getCategory() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CategoryModel>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'https://api.escuelajs.co/api/v1/categories',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<CategoryModel> _value;
-    try {
-      _value = _result.data!
-          .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<List<GetProductionModel>> getAllProduct(
-    int limit,
-    int offset,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'offset': offset,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<GetProductionModel>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'https://api.escuelajs.co/api/v1/products',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<GetProductionModel> _value;
-    try {
-      _value = _result.data!
-          .map((dynamic i) =>
-              GetProductionModel.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = PosStockModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -16,34 +16,24 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     DashBoardRoute.name: (routeData) {
+      final args = routeData.argsAs<DashBoardRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const DashBoardPage()),
-      );
-    },
-    DetailProductRoute.name: (routeData) {
-      final args = routeData.argsAs<DetailProductRouteArgs>(
-          orElse: () => const DetailProductRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: DetailProductPage(
+        child: WrappedRoute(
+            child: DashBoardPage(
           key: args.key,
-          desc: args.desc,
-          title: args.title,
-          location: args.location,
-          imageUrl: args.imageUrl,
-          price: args.price,
-          followerCount: args.followerCount,
-          itemCount: args.itemCount,
-        ),
+          userInfo: args.userInfo,
+        )),
       );
     },
     HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      final args = routeData.argsAs<HomeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: HomePage(key: args.key)),
+        child: HomePage(
+          key: args.key,
+          userInfo: args.userInfo,
+        ),
       );
     },
     LocationRoute.name: (routeData) {
@@ -83,83 +73,39 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [DashBoardPage]
-class DashBoardRoute extends PageRouteInfo<void> {
-  const DashBoardRoute({List<PageRouteInfo>? children})
-      : super(
+class DashBoardRoute extends PageRouteInfo<DashBoardRouteArgs> {
+  DashBoardRoute({
+    Key? key,
+    required CodeModel userInfo,
+    List<PageRouteInfo>? children,
+  }) : super(
           DashBoardRoute.name,
+          args: DashBoardRouteArgs(
+            key: key,
+            userInfo: userInfo,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'DashBoardRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<DashBoardRouteArgs> page =
+      PageInfo<DashBoardRouteArgs>(name);
 }
 
-/// generated route for
-/// [DetailProductPage]
-class DetailProductRoute extends PageRouteInfo<DetailProductRouteArgs> {
-  DetailProductRoute({
-    Key? key,
-    String? desc,
-    String? title,
-    String? location,
-    String? imageUrl,
-    double? price,
-    String? followerCount,
-    String? itemCount,
-    List<PageRouteInfo>? children,
-  }) : super(
-          DetailProductRoute.name,
-          args: DetailProductRouteArgs(
-            key: key,
-            desc: desc,
-            title: title,
-            location: location,
-            imageUrl: imageUrl,
-            price: price,
-            followerCount: followerCount,
-            itemCount: itemCount,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'DetailProductRoute';
-
-  static const PageInfo<DetailProductRouteArgs> page =
-      PageInfo<DetailProductRouteArgs>(name);
-}
-
-class DetailProductRouteArgs {
-  const DetailProductRouteArgs({
+class DashBoardRouteArgs {
+  const DashBoardRouteArgs({
     this.key,
-    this.desc,
-    this.title,
-    this.location,
-    this.imageUrl,
-    this.price,
-    this.followerCount,
-    this.itemCount,
+    required this.userInfo,
   });
 
   final Key? key;
 
-  final String? desc;
-
-  final String? title;
-
-  final String? location;
-
-  final String? imageUrl;
-
-  final double? price;
-
-  final String? followerCount;
-
-  final String? itemCount;
+  final CodeModel userInfo;
 
   @override
   String toString() {
-    return 'DetailProductRouteArgs{key: $key, desc: $desc, title: $title, location: $location, imageUrl: $imageUrl, price: $price, followerCount: $followerCount, itemCount: $itemCount}';
+    return 'DashBoardRouteArgs{key: $key, userInfo: $userInfo}';
   }
 }
 
@@ -168,10 +114,14 @@ class DetailProductRouteArgs {
 class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
     Key? key,
+    required CodeModel userInfo,
     List<PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
-          args: HomeRouteArgs(key: key),
+          args: HomeRouteArgs(
+            key: key,
+            userInfo: userInfo,
+          ),
           initialChildren: children,
         );
 
@@ -181,13 +131,18 @@ class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({this.key});
+  const HomeRouteArgs({
+    this.key,
+    required this.userInfo,
+  });
 
   final Key? key;
 
+  final CodeModel userInfo;
+
   @override
   String toString() {
-    return 'HomeRouteArgs{key: $key}';
+    return 'HomeRouteArgs{key: $key, userInfo: $userInfo}';
   }
 }
 

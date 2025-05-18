@@ -1,25 +1,36 @@
-import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/login_usecase.dart';
+import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final LoginUseCase _loginUseCase;
-  LoginCubit(
-    this._loginUseCase,
-  ) : super(LoginState.initial());
+  LoginCubit() : super(LoginState.initial());
 
-  Future<void> userLogin({required String username, required String password}) async {
-    emit(LoginState.loading());
-    final result =
-        await _loginUseCase(LoginParams(username: username, password: password));
-    result.fold(
-      (failure) => emit(LoginState.failure(failure.message)),
-      (user) => emit(LoginState.success(user)),
-    );
+  Future<CodeModel?> loginUser(String username, String password) async {
+    final dio = Dio();
+
+    try {
+      final response = await dio.post(
+        ApiPath.authLogin,
+        data: {
+          'username': username,
+          'password': password,
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = response.data;
+        final codeModel = CodeModel.fromJson(data);
+        emit(LoginState.success(codeModel));
+      } else {
+        emit(LoginState.failure('Login failed: ${response.statusCode}'));
+      }
+    } catch (e) {
+      print('Error during login: $e');
+      return null;
+    }
   }
 }

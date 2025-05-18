@@ -1,76 +1,42 @@
-import 'package:app_flutter_starter_for_job/src/core/service/notification/notification.dart';
-import 'package:app_flutter_starter_for_job/src/core/usecase/use_case.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/category_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/get_product_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/product_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/category_usecase.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/get_all_product_usecase.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart';
-import 'package:bloc/bloc.dart';
+import 'dart:convert';
+import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
+import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_model.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_state.dart';
 part 'home_cubit.freezed.dart';
 
+@injectable
 class HomeCubit extends Cubit<HomeState> {
-  final ProductUseCase _productUseCase;
-  final CategoryUseCase _categoryUsecase;
-  final GetAllProductUseCase _getAllProductUseCase;
-  HomeCubit(
-      this._productUseCase, this._categoryUsecase, this._getAllProductUseCase)
-      : super(HomeState.initial());
-
-  Future<void> getPhotos() async {
-    emit(HomeState.loading());
+  final Dio dio;
+  HomeCubit(this.dio, this.userInfo) : super(const HomeState.initial());
+  final CodeModel userInfo;
+  Future<void> getProduct() async {
+    emit(const HomeState.loading());
     try {
-      final result = await _productUseCase.call(NoParams());
-      result.fold(
-        (error) => emit(HomeState.error(error.message)),
-        (product) {
-          if (product.isEmpty) {
-            emit(const HomeState.error('No data available'));
-          } else {
-            emit(HomeState.success(data: product, categoryData: []));
-          }
+      final response = await dio.post(
+        ApiPath.posStock,
+        data: {
+          "wh_code": userInfo.ic_wht,
+          "sh_code": userInfo.ic_shelf,
+          "cust_group_main": userInfo.cust_group_main,
+          "cust_group_sub": userInfo.cust_group_sub.toString(),
+          "currency_code": "01",
         },
       );
+      final List<dynamic> dataList = response.data['list'];
+      final products =dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
+      emit(HomeState.success(posStock: products));
     } catch (e) {
-      emit(HomeState.error(e.toString()));
-    }
-  }
-
-  Future<void> fetchData() async {
-    emit(HomeState.loading());
-
-    try {
-      final categoriesResult = await _categoryUsecase.call(NoParams());
-      final productsResult = await _getAllProductUseCase.call(Pagination(limit: 6, offset: 0));
-
-      categoriesResult.fold(
-        (error) => emit(HomeState.error(error.message)),
-        (categories) async {
-          if (categories.isEmpty) {
-            emit(const HomeState.error('No categories available'));
-          } else {
-            productsResult.fold(
-              (error) => emit(HomeState.error(error.message)),
-              (products) {
-                if (products.isEmpty) {
-                  emit(const HomeState.error('No products available'));
-                } else {
-                  emit(HomeState.success(
-                    categoryData: categories,
-                    getAllProduction: products,
-                    data: [],
-                  ));
-                }
-              },
-            );
-          }
-        },
-      );
-    } catch (e) {
-      emit(HomeState.error(e.toString()));
+      emit(HomeState.failure(e.toString()));
     }
   }
 }

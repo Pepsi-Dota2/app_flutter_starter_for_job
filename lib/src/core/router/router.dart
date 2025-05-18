@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/dash_board.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
@@ -19,7 +20,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: DashBoardRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: LocationRoute.page),
-        AutoRoute(page: DetailProductRoute.page),
         AutoRoute(page: SearchRoute.page),
       ];
 }

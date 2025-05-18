@@ -1,14 +1,8 @@
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.config.dart';
 import 'package:app_flutter_starter_for_job/src/core/config/observe.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/category_usecase.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/get_all_product_usecase.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/usecase/product_usecase.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/login/domain/usecase/login_usecase.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/logout_usecase.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/domain/usecase/profile_usecase.dart';
+
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,13 +15,8 @@ Future<GetIt> configureDependencies() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = SimpleBlocObserver();
-  getIt.registerFactory<LoginCubit>(() => LoginCubit(
-        getIt<LoginUseCase>(),
-      ));
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<ProductUseCase>(),
-      getIt<CategoryUseCase>(), getIt<GetAllProductUseCase>()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit());
   getIt.registerFactory<DashboardCubit>(() => DashboardCubit());
-  getIt.registerFactory<ProfileCubit>(
-      () => ProfileCubit(getIt<ProfileUseCase>(), getIt<LogoutUseCase>()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit());
   return getIt.init();
 }

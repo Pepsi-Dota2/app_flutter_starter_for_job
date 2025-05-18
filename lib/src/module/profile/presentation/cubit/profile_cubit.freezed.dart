@@ -20,7 +20,7 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -30,7 +30,7 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -40,7 +40,7 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
@@ -144,7 +144,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -157,7 +157,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -170,7 +170,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
@@ -273,7 +273,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -286,7 +286,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -299,7 +299,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
@@ -364,8 +364,6 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({User? user});
 }
 
 /// @nodoc
@@ -378,63 +376,38 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = freezed,
-  }) {
-    return _then(_$SuccessImpl(
-      freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.user);
-
-  @override
-  final User? user;
+  const _$SuccessImpl();
 
   @override
   String toString() {
-    return 'ProfileState.success(user: $user)';
+    return 'ProfileState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.user, user) || other.user == user));
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
   }) {
-    return success(user);
+    return success();
   }
 
   @override
@@ -442,12 +415,12 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
   }) {
-    return success?.call(user);
+    return success?.call();
   }
 
   @override
@@ -455,14 +428,14 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(user);
+      return success();
     }
     return orElse();
   }
@@ -512,15 +485,7 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ProfileState {
-  const factory _Success(final User? user) = _$SuccessImpl;
-
-  User? get user;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
@@ -566,7 +531,7 @@ class _$EmptyImpl implements _Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -579,7 +544,7 @@ class _$EmptyImpl implements _Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -592,7 +557,7 @@ class _$EmptyImpl implements _Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
@@ -722,7 +687,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -735,7 +700,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -748,7 +713,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,
@@ -859,7 +824,7 @@ class _$LogoutSuccessImpl implements _LogoutSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User? user) success,
+    required TResult Function() success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
     required TResult Function() logoutSuccess,
@@ -872,7 +837,7 @@ class _$LogoutSuccessImpl implements _LogoutSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User? user)? success,
+    TResult? Function()? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
     TResult? Function()? logoutSuccess,
@@ -885,7 +850,7 @@ class _$LogoutSuccessImpl implements _LogoutSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User? user)? success,
+    TResult Function()? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     TResult Function()? logoutSuccess,

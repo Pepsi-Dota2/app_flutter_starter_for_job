@@ -2,6 +2,7 @@ import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/custom_button_login.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/custom_formfield.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/loding_dialog.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/password_input.dart';
@@ -29,17 +30,28 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
-            orElse: () => LoadingDialog.showLoadingDialog(context),
-            success: (user) {
-              LoadingDialog.hideLoadingDialog(context);
-              context.router.replace(DashBoardRoute());
-            },
-            failure: (failure) {
-              LoadingDialog.hideLoadingDialog(context);
+          loading: () => LoadingDialog.showLoadingDialog(context),
+          success: (user) {
+            LoadingDialog.hideLoadingDialog(context);
+            context.router.replace(DashBoardRoute(userInfo: user));
+          },
+          failure: (message) {
+            LoadingDialog.hideLoadingDialog(context);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text("Username or password incorrect"),
+                  backgroundColor: Colors.red,
+                ),
+              );
             });
+          },
+          orElse: () => LoadingDialog.showLoadingDialog(context),
+        );
       },
       builder: (context, state) {
         return Scaffold(
@@ -55,22 +67,20 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
                   children: [
                     TextInput(
                         controller: usernameController,
-                        hintText: "example@gmail.com",
-                        header: "Email"),
+                        hintText: "user name",
+                        header: "user name"),
                     const SizedBox(height: 12),
                     PasswordInput(
                         controller: pwdController,
                         hintText: "***********",
                         header: "Password"),
                     const SizedBox(height: 30),
-                    RadiusButton(
+                  RadiusButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate() != false) {
                           final username = usernameController.text.trim();
-                          final pwd = pwdController.text.trim();
-                          context
-                              .read<LoginCubit>()
-                              .userLogin(username: username, password: pwd);
+                          final password = pwdController.text.trim();
+                          context.read<LoginCubit>().loginUser(username, password);
                         }
                       },
                       title: "Sign In",

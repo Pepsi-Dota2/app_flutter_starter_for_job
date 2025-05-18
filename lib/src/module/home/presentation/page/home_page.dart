@@ -1,183 +1,87 @@
-import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
-import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
-import 'package:app_flutter_starter_for_job/src/core/utils/custom_solution_break_character.dart';
-import 'package:app_flutter_starter_for_job/src/core/utils/image_parser.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/carousel_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/product_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/carousel_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/carousel.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/custom_skeleton.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_widget.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/search_bar.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget implements AutoRouteWrapper {
-  HomePage({super.key});
-   final PagingController<int, GetProductionModel> _pagingController = PagingController(firstPageKey: 0);
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return this;
-  }
-
+class HomePage extends StatelessWidget {
+  final dio = Dio();
+  final CodeModel userInfo;
+  HomePage({super.key, required this.userInfo});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: IconButton(
-              icon: const Icon(
-                Icons.notifications_outlined,
-                size: 26,
-              ),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-      body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return state.when(
-            initial: () => Center(child: CircularProgressIndicator()),
-            loading: () => Skeletonizer(child: CustomSkeleton()),
-            error: (error) => Center(
-              child: Text('Error: $error'),
-            ),
-            success: (data, categoryData, product, onSelectBank, selectPaymentMethod , hasmoreData) {
-              return  SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: SafeArea(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ModernSearchBar(
-                          onSearchTap: () {
-                            context.router.push(SearchRoute());
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        CarouselWidget(
-                          items: CarouselModel.items,
-                        ),
-                        const SizedBox(height: 16),
-                        SizedBox(
-                          height: size.height * 0.1,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: categoryData.length,
+    return BlocProvider(
+      create: (_) => HomeCubit(dio, userInfo)..getProduct(),
+      child: Scaffold(
+        appBar: AppBar(title: Text("Odein Store")),
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => Center(child: Text('Ready')),
+              loading: () => Center(child: CircularProgressIndicator()),
+              failure: (msg) => Center(child: Text('❌ $msg')),
+              success: (products) {
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: SafeArea(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ModernSearchBar(
+                            onSearchTap: () {
+                              context.router.push(SearchRoute());
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          CarouselWidget(
+                            items: CarouselModel.items,
+                          ),
+                          const SizedBox(height: 16),
+                          const SizedBox(height: 16),
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 0.75,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                            ),
+                            itemCount: products.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                width: size.width * 0.52,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: AppColors.grey.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(16),
-                                          child: Image.network(
-                                            categoryData[index].image,
-                                            fit: BoxFit.cover,
-                                            width: size.width * 0.22,
-                                            errorBuilder:
-                                                (context, error, stackTrace) {
-                                              return Container(
-                                                width: size.width * 0.24,
-                                                decoration: const BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        "assets/images/nike-kyrie-7-fire-ice-sneakerroom-do5360-900-release-date.webp"),
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 6),
-                                          child: Text(
-                                            TextUtil.wrapText(categoryData[index].name ,8),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                                              color: Colors.black87,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                              return ProductWidget(
+                                image: products[index].url_image,
+                                title: products[index].main_name,
+                                price: products[index].sale_price1,
+                                desc: products[index].balance_qty,
                               );
                             },
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.75,
-                            crossAxisSpacing: 16,
-                            mainAxisSpacing: 16,
-                          ),
-                          itemCount: product.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            String imageUrl = ImageUrlParser.parseImageUrl(
-                                product[index].images[0]);
-                            return InkWell(
-                              onTap: () {
-                                context.router.push(DetailProductRoute(
-                                  desc: product[index].description,
-                                  title: product[index].title,
-                                  location: "laos",
-                                  imageUrl: imageUrl,
-                                  price: product[index].price.toDouble(),
-                                  followerCount: "20",
-                                  itemCount: "20",
-                                ));
-                              },
-                              child: ProductWidget(
-                                image: imageUrl,
-                                title: product[index].title,
-                                price: product[index].price.toDouble(),
-                                desc: product[index].description,
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          );
-        },
+                );
+              },
+              error: (String message) {
+                return Center(
+                  child: Text(message),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

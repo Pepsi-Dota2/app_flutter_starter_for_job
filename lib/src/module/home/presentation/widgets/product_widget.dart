@@ -10,17 +10,17 @@ class ProductWidget extends StatelessWidget {
     required this.price,
     required this.desc,
   });
-  
+
   final String image;
   final String title;
   final String desc;
   final double? rating;
   final int? reviews;
-  final double price;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
-       final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -30,7 +30,7 @@ class ProductWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 2, 
+            flex: 2,
             child: Stack(
               children: [
                 SizedBox(
@@ -66,7 +66,7 @@ class ProductWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3, 
+            flex: 3,
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -92,34 +92,34 @@ class ProductWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          size: 16,
-                          color: Colors.amber,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        size: 16,
+                        color: Colors.amber,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        "${rating ?? 0}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
-                        const SizedBox(width: 4),
-                        Text(
-                          "${rating ?? 0}",
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        '| ${reviews ?? 0}',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
                         ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '| ${reviews ?? 0}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
                   const Spacer(),
                   Text(
-                    '\$${price.toStringAsFixed(2)}',
+                    '\$${price}',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

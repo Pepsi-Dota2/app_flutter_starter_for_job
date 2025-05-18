@@ -1,4 +1,4 @@
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/category_model.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
