@@ -4,7 +4,7 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
     required this.image,
-    required this.title,
+    this.title,
     this.rating,
     this.reviews,
     required this.price,
@@ -12,8 +12,8 @@ class ProductWidget extends StatelessWidget {
   });
 
   final String image;
-  final String title;
-  final String desc;
+  final String? title;
+  final int desc;
   final double? rating;
   final int? reviews;
   final String price;
@@ -62,7 +62,7 @@ class ProductWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    title ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -72,7 +72,7 @@ class ProductWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    desc,
+                    "${desc}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(

@@ -22,14 +22,17 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (_) => HomeCubit(dio, userInfo)..getProduct(),
       child: Scaffold(
-        appBar: AppBar(title: Text("Odein Store"),backgroundColor: Colors.amber.shade700,),
+        appBar: AppBar(
+          title: Text("Odein Store"),
+          backgroundColor: Colors.amber.shade700,
+        ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return state.when(
               initial: () => Center(child: Text('Ready')),
               loading: () => Center(child: CircularProgressIndicator()),
               failure: (msg) => Center(child: Text('❌ $msg')),
-              success: (products) {
+              success: (products, currentPage, hasMorePages, totalItems) {
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -58,15 +61,20 @@ class HomePage extends StatelessWidget {
                               crossAxisSpacing: 16,
                               mainAxisSpacing: 16,
                             ),
-                            itemCount: products.length,
+                            itemCount: products.length + (hasMorePages ? 1 : 0),
                             itemBuilder: (BuildContext context, int index) {
                               return ProductWidget(
                                 image: products[index].url_image,
-                                title: products[index].main_name,
+                                title: products[index].name_1,
                                 price: products[index].sale_price1,
                                 desc: products[index].balance_qty,
                               );
                             },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child:
+                                Text("Page $currentPage • ${totalItems} items"),
                           ),
                         ],
                       ),

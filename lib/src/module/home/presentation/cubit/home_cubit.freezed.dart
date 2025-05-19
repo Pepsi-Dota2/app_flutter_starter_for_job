@@ -22,7 +22,9 @@ mixin _$HomeState {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +33,9 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +44,9 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,7 +151,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) {
     return initial();
   }
@@ -157,7 +165,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) {
     return initial?.call();
   }
@@ -169,7 +179,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -274,7 +286,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) {
     return loading();
   }
@@ -286,7 +300,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) {
     return loading?.call();
   }
@@ -298,7 +314,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -432,7 +450,9 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) {
     return failure(this.failure);
   }
@@ -444,7 +464,9 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) {
     return failure?.call(this.failure);
   }
@@ -456,7 +478,9 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -598,7 +622,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) {
     return error(message);
   }
@@ -610,7 +636,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) {
     return error?.call(message);
   }
@@ -622,7 +650,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -690,7 +720,11 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PosStockItemModel> posStock});
+  $Res call(
+      {List<PosStockItemModel> posStock,
+      int currentPage,
+      bool hasMorePages,
+      int totalItems});
 }
 
 /// @nodoc
@@ -707,12 +741,27 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? posStock = null,
+    Object? currentPage = null,
+    Object? hasMorePages = null,
+    Object? totalItems = null,
   }) {
     return _then(_$SuccessImpl(
       posStock: null == posStock
           ? _value._posStock
           : posStock // ignore: cast_nullable_to_non_nullable
               as List<PosStockItemModel>,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMorePages: null == hasMorePages
+          ? _value.hasMorePages
+          : hasMorePages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalItems: null == totalItems
+          ? _value.totalItems
+          : totalItems // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -720,7 +769,11 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
-  const _$SuccessImpl({final List<PosStockItemModel> posStock = const []})
+  const _$SuccessImpl(
+      {final List<PosStockItemModel> posStock = const [],
+      this.currentPage = 1,
+      this.hasMorePages = false,
+      this.totalItems = 0})
       : _posStock = posStock;
 
   final List<PosStockItemModel> _posStock;
@@ -733,8 +786,18 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   }
 
   @override
+  @JsonKey()
+  final int currentPage;
+  @override
+  @JsonKey()
+  final bool hasMorePages;
+  @override
+  @JsonKey()
+  final int totalItems;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.success(posStock: $posStock)';
+    return 'HomeState.success(posStock: $posStock, currentPage: $currentPage, hasMorePages: $hasMorePages, totalItems: $totalItems)';
   }
 
   @override
@@ -742,7 +805,10 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'HomeState.success'))
-      ..add(DiagnosticsProperty('posStock', posStock));
+      ..add(DiagnosticsProperty('posStock', posStock))
+      ..add(DiagnosticsProperty('currentPage', currentPage))
+      ..add(DiagnosticsProperty('hasMorePages', hasMorePages))
+      ..add(DiagnosticsProperty('totalItems', totalItems));
   }
 
   @override
@@ -750,12 +816,22 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._posStock, _posStock));
+            const DeepCollectionEquality().equals(other._posStock, _posStock) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.hasMorePages, hasMorePages) ||
+                other.hasMorePages == hasMorePages) &&
+            (identical(other.totalItems, totalItems) ||
+                other.totalItems == totalItems));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posStock));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_posStock),
+      currentPage,
+      hasMorePages,
+      totalItems);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -772,9 +848,11 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock) success,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
   }) {
-    return success(posStock);
+    return success(posStock, currentPage, hasMorePages, totalItems);
   }
 
   @override
@@ -784,9 +862,11 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock)? success,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
   }) {
-    return success?.call(posStock);
+    return success?.call(posStock, currentPage, hasMorePages, totalItems);
   }
 
   @override
@@ -796,11 +876,13 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock)? success,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(posStock);
+      return success(posStock, currentPage, hasMorePages, totalItems);
     }
     return orElse();
   }
@@ -847,10 +929,16 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
 }
 
 abstract class _Success implements HomeState {
-  const factory _Success({final List<PosStockItemModel> posStock}) =
-      _$SuccessImpl;
+  const factory _Success(
+      {final List<PosStockItemModel> posStock,
+      final int currentPage,
+      final bool hasMorePages,
+      final int totalItems}) = _$SuccessImpl;
 
   List<PosStockItemModel> get posStock;
+  int get currentPage;
+  bool get hasMorePages;
+  int get totalItems;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

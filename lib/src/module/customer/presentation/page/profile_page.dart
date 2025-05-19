@@ -1,5 +1,7 @@
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/profile_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/search_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,12 +70,11 @@ class ProfilePage extends StatelessWidget implements AutoRouteWrapper {
                 ),
               ),
               const Gap(20),
-              ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text("ກົດເພື່ອເລືອກລູກຄ້າ"),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {},
-              )
+              ModernSearchBar(
+                onSearchTap: () {
+                  context.router.push(SearchRoute());
+                },
+              ),
             ],
           ),
         ));

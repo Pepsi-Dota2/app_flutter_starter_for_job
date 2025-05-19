@@ -7,8 +7,8 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/d
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/profile_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/page/profile_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

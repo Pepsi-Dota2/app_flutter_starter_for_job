@@ -8,5 +8,8 @@ class HomeState with _$HomeState {
   const factory HomeState.error(String message) = _Error;
   const factory HomeState.success({
     @Default([]) List<PosStockItemModel> posStock,
+    @Default(1) int currentPage,
+    @Default(false) bool hasMorePages,
+    @Default(0) int totalItems,
   }) = _Success;
 }

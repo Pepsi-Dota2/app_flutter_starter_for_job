@@ -21,8 +21,8 @@ PosStockItemModel _$PosStockItemModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PosStockItemModel {
   String get average_cost => throw _privateConstructorUsedError;
-  String get balance_qty => throw _privateConstructorUsedError;
-  String get barcode => throw _privateConstructorUsedError;
+  int get balance_qty => throw _privateConstructorUsedError;
+  String get name_1 => throw _privateConstructorUsedError;
   String get group_main => throw _privateConstructorUsedError;
   String get group_sub => throw _privateConstructorUsedError;
   String get ic_code => throw _privateConstructorUsedError;
@@ -55,8 +55,8 @@ abstract class $PosStockItemModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String average_cost,
-      String balance_qty,
-      String barcode,
+      int balance_qty,
+      String name_1,
       String group_main,
       String group_sub,
       String ic_code,
@@ -89,7 +89,7 @@ class _$PosStockItemModelCopyWithImpl<$Res, $Val extends PosStockItemModel>
   $Res call({
     Object? average_cost = null,
     Object? balance_qty = null,
-    Object? barcode = null,
+    Object? name_1 = null,
     Object? group_main = null,
     Object? group_sub = null,
     Object? ic_code = null,
@@ -112,10 +112,10 @@ class _$PosStockItemModelCopyWithImpl<$Res, $Val extends PosStockItemModel>
       balance_qty: null == balance_qty
           ? _value.balance_qty
           : balance_qty // ignore: cast_nullable_to_non_nullable
-              as String,
-      barcode: null == barcode
-          ? _value.barcode
-          : barcode // ignore: cast_nullable_to_non_nullable
+              as int,
+      name_1: null == name_1
+          ? _value.name_1
+          : name_1 // ignore: cast_nullable_to_non_nullable
               as String,
       group_main: null == group_main
           ? _value.group_main
@@ -183,8 +183,8 @@ abstract class _$$PosStockItemModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String average_cost,
-      String balance_qty,
-      String barcode,
+      int balance_qty,
+      String name_1,
       String group_main,
       String group_sub,
       String ic_code,
@@ -215,7 +215,7 @@ class __$$PosStockItemModelImplCopyWithImpl<$Res>
   $Res call({
     Object? average_cost = null,
     Object? balance_qty = null,
-    Object? barcode = null,
+    Object? name_1 = null,
     Object? group_main = null,
     Object? group_sub = null,
     Object? ic_code = null,
@@ -238,10 +238,10 @@ class __$$PosStockItemModelImplCopyWithImpl<$Res>
       balance_qty: null == balance_qty
           ? _value.balance_qty
           : balance_qty // ignore: cast_nullable_to_non_nullable
-              as String,
-      barcode: null == barcode
-          ? _value.barcode
-          : barcode // ignore: cast_nullable_to_non_nullable
+              as int,
+      name_1: null == name_1
+          ? _value.name_1
+          : name_1 // ignore: cast_nullable_to_non_nullable
               as String,
       group_main: null == group_main
           ? _value.group_main
@@ -304,8 +304,8 @@ class __$$PosStockItemModelImplCopyWithImpl<$Res>
 class _$PosStockItemModelImpl implements _PosStockItemModel {
   const _$PosStockItemModelImpl(
       {this.average_cost = "",
-      this.balance_qty = "",
-      this.barcode = "",
+      this.balance_qty = 0,
+      this.name_1 = "",
       this.group_main = "",
       this.group_sub = "",
       this.ic_code = "",
@@ -328,10 +328,10 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
   final String average_cost;
   @override
   @JsonKey()
-  final String balance_qty;
+  final int balance_qty;
   @override
   @JsonKey()
-  final String barcode;
+  final String name_1;
   @override
   @JsonKey()
   final String group_main;
@@ -374,7 +374,7 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
 
   @override
   String toString() {
-    return 'PosStockItemModel(average_cost: $average_cost, balance_qty: $balance_qty, barcode: $barcode, group_main: $group_main, group_sub: $group_sub, ic_code: $ic_code, ic_name: $ic_name, ic_unit_code: $ic_unit_code, item_brand: $item_brand, item_cat_name: $item_cat_name, item_category: $item_category, main_name: $main_name, sale_price1: $sale_price1, sub_name: $sub_name, unit_code: $unit_code, url_image: $url_image)';
+    return 'PosStockItemModel(average_cost: $average_cost, balance_qty: $balance_qty, name_1: $name_1, group_main: $group_main, group_sub: $group_sub, ic_code: $ic_code, ic_name: $ic_name, ic_unit_code: $ic_unit_code, item_brand: $item_brand, item_cat_name: $item_cat_name, item_category: $item_category, main_name: $main_name, sale_price1: $sale_price1, sub_name: $sub_name, unit_code: $unit_code, url_image: $url_image)';
   }
 
   @override
@@ -386,7 +386,7 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
                 other.average_cost == average_cost) &&
             (identical(other.balance_qty, balance_qty) ||
                 other.balance_qty == balance_qty) &&
-            (identical(other.barcode, barcode) || other.barcode == barcode) &&
+            (identical(other.name_1, name_1) || other.name_1 == name_1) &&
             (identical(other.group_main, group_main) ||
                 other.group_main == group_main) &&
             (identical(other.group_sub, group_sub) ||
@@ -419,7 +419,7 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
       runtimeType,
       average_cost,
       balance_qty,
-      barcode,
+      name_1,
       group_main,
       group_sub,
       ic_code,
@@ -454,8 +454,8 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
 abstract class _PosStockItemModel implements PosStockItemModel {
   const factory _PosStockItemModel(
       {final String average_cost,
-      final String balance_qty,
-      final String barcode,
+      final int balance_qty,
+      final String name_1,
       final String group_main,
       final String group_sub,
       final String ic_code,
@@ -476,9 +476,9 @@ abstract class _PosStockItemModel implements PosStockItemModel {
   @override
   String get average_cost;
   @override
-  String get balance_qty;
+  int get balance_qty;
   @override
-  String get barcode;
+  String get name_1;
   @override
   String get group_main;
   @override

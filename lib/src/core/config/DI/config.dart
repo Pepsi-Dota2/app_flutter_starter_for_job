@@ -3,7 +3,7 @@ import 'package:app_flutter_starter_for_job/src/core/config/observe.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
 
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';

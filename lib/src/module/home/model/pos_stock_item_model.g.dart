@@ -10,8 +10,8 @@ _$PosStockItemModelImpl _$$PosStockItemModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PosStockItemModelImpl(
       average_cost: json['average_cost'] as String? ?? "",
-      balance_qty: json['balance_qty'] as String? ?? "",
-      barcode: json['barcode'] as String? ?? "",
+      balance_qty: (json['balance_qty'] as num?)?.toInt() ?? 0,
+      name_1: json['name_1'] as String? ?? "",
       group_main: json['group_main'] as String? ?? "",
       group_sub: json['group_sub'] as String? ?? "",
       ic_code: json['ic_code'] as String? ?? "",
@@ -32,7 +32,7 @@ Map<String, dynamic> _$$PosStockItemModelImplToJson(
     <String, dynamic>{
       'average_cost': instance.average_cost,
       'balance_qty': instance.balance_qty,
-      'barcode': instance.barcode,
+      'name_1': instance.name_1,
       'group_main': instance.group_main,
       'group_sub': instance.group_sub,
       'ic_code': instance.ic_code,

@@ -25,6 +25,7 @@ mixin _$PosStockModel {
   String get cust_group_main => throw _privateConstructorUsedError;
   String get cust_group_sub => throw _privateConstructorUsedError;
   String get currency_code => throw _privateConstructorUsedError;
+  String get group_main => throw _privateConstructorUsedError;
 
   /// Serializes this PosStockModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,8 @@ abstract class $PosStockModelCopyWith<$Res> {
       String sh_code,
       String cust_group_main,
       String cust_group_sub,
-      String currency_code});
+      String currency_code,
+      String group_main});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$PosStockModelCopyWithImpl<$Res, $Val extends PosStockModel>
     Object? cust_group_main = null,
     Object? cust_group_sub = null,
     Object? currency_code = null,
+    Object? group_main = null,
   }) {
     return _then(_value.copyWith(
       wh_code: null == wh_code
@@ -92,6 +95,10 @@ class _$PosStockModelCopyWithImpl<$Res, $Val extends PosStockModel>
           ? _value.currency_code
           : currency_code // ignore: cast_nullable_to_non_nullable
               as String,
+      group_main: null == group_main
+          ? _value.group_main
+          : group_main // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$PosStockModelImplCopyWith<$Res>
       String sh_code,
       String cust_group_main,
       String cust_group_sub,
-      String currency_code});
+      String currency_code,
+      String group_main});
 }
 
 /// @nodoc
@@ -130,6 +138,7 @@ class __$$PosStockModelImplCopyWithImpl<$Res>
     Object? cust_group_main = null,
     Object? cust_group_sub = null,
     Object? currency_code = null,
+    Object? group_main = null,
   }) {
     return _then(_$PosStockModelImpl(
       wh_code: null == wh_code
@@ -152,6 +161,10 @@ class __$$PosStockModelImplCopyWithImpl<$Res>
           ? _value.currency_code
           : currency_code // ignore: cast_nullable_to_non_nullable
               as String,
+      group_main: null == group_main
+          ? _value.group_main
+          : group_main // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -164,7 +177,8 @@ class _$PosStockModelImpl implements _PosStockModel {
       this.sh_code = "",
       this.cust_group_main = "",
       this.cust_group_sub = "",
-      this.currency_code = ""});
+      this.currency_code = "",
+      this.group_main = ""});
 
   factory _$PosStockModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PosStockModelImplFromJson(json);
@@ -184,10 +198,13 @@ class _$PosStockModelImpl implements _PosStockModel {
   @override
   @JsonKey()
   final String currency_code;
+  @override
+  @JsonKey()
+  final String group_main;
 
   @override
   String toString() {
-    return 'PosStockModel(wh_code: $wh_code, sh_code: $sh_code, cust_group_main: $cust_group_main, cust_group_sub: $cust_group_sub, currency_code: $currency_code)';
+    return 'PosStockModel(wh_code: $wh_code, sh_code: $sh_code, cust_group_main: $cust_group_main, cust_group_sub: $cust_group_sub, currency_code: $currency_code, group_main: $group_main)';
   }
 
   @override
@@ -202,13 +219,15 @@ class _$PosStockModelImpl implements _PosStockModel {
             (identical(other.cust_group_sub, cust_group_sub) ||
                 other.cust_group_sub == cust_group_sub) &&
             (identical(other.currency_code, currency_code) ||
-                other.currency_code == currency_code));
+                other.currency_code == currency_code) &&
+            (identical(other.group_main, group_main) ||
+                other.group_main == group_main));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, wh_code, sh_code,
-      cust_group_main, cust_group_sub, currency_code);
+      cust_group_main, cust_group_sub, currency_code, group_main);
 
   /// Create a copy of PosStockModel
   /// with the given fields replaced by the non-null parameter values.
@@ -232,7 +251,8 @@ abstract class _PosStockModel implements PosStockModel {
       final String sh_code,
       final String cust_group_main,
       final String cust_group_sub,
-      final String currency_code}) = _$PosStockModelImpl;
+      final String currency_code,
+      final String group_main}) = _$PosStockModelImpl;
 
   factory _PosStockModel.fromJson(Map<String, dynamic> json) =
       _$PosStockModelImpl.fromJson;
@@ -247,6 +267,8 @@ abstract class _PosStockModel implements PosStockModel {
   String get cust_group_sub;
   @override
   String get currency_code;
+  @override
+  String get group_main;
 
   /// Create a copy of PosStockModel
   /// with the given fields replaced by the non-null parameter values.
