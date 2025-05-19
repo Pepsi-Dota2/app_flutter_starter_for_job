@@ -21,7 +21,7 @@ mixin _$LoginState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$LoginState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$LoginState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) =>
@@ -139,7 +139,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) {
     return initial();
@@ -151,7 +151,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) {
     return initial?.call();
@@ -163,7 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) {
     return loading();
@@ -274,7 +274,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) {
     return loading?.call();
@@ -286,7 +286,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {
@@ -385,7 +385,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) {
     return error();
@@ -397,7 +397,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) {
     return error?.call();
@@ -409,7 +409,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {
@@ -470,7 +470,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserCredential user});
+  $Res call({CodeModel user});
+
+  $CodeModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -492,8 +494,18 @@ class __$$SuccessImplCopyWithImpl<$Res>
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserCredential,
+              as CodeModel,
     ));
+  }
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CodeModelCopyWith<$Res> get user {
+    return $CodeModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -503,7 +515,7 @@ class _$SuccessImpl implements _Success {
   const _$SuccessImpl(this.user);
 
   @override
-  final UserCredential user;
+  final CodeModel user;
 
   @override
   String toString() {
@@ -535,7 +547,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) {
     return success(user);
@@ -547,7 +559,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) {
     return success?.call(user);
@@ -559,7 +571,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {
@@ -611,9 +623,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements LoginState {
-  const factory _Success(final UserCredential user) = _$SuccessImpl;
+  const factory _Success(final CodeModel user) = _$SuccessImpl;
 
-  UserCredential get user;
+  CodeModel get user;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -693,7 +705,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
-    required TResult Function(UserCredential user) success,
+    required TResult Function(CodeModel user) success,
     required TResult Function(String failure) failure,
   }) {
     return failure(this.failure);
@@ -705,7 +717,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
-    TResult? Function(UserCredential user)? success,
+    TResult? Function(CodeModel user)? success,
     TResult? Function(String failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -717,7 +729,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
-    TResult Function(UserCredential user)? success,
+    TResult Function(CodeModel user)? success,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {

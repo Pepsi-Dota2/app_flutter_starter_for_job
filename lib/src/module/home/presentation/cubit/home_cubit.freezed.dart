@@ -20,13 +20,10 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
         success,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,13 +31,10 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,13 +42,10 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
     required TResult orElse(),
   }) =>
@@ -63,6 +54,7 @@ mixin _$HomeState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) =>
@@ -71,6 +63,7 @@ mixin _$HomeState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) =>
@@ -79,6 +72,7 @@ mixin _$HomeState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -127,12 +121,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeState.initial'));
   }
 
   @override
@@ -149,13 +149,10 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
         success,
   }) {
     return initial();
@@ -166,13 +163,10 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
   }) {
     return initial?.call();
@@ -183,13 +177,10 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
     required TResult orElse(),
   }) {
@@ -204,6 +195,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -215,6 +207,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -226,6 +219,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -262,12 +256,18 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   const _$LoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeState.loading'));
   }
 
   @override
@@ -284,13 +284,10 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
         success,
   }) {
     return loading();
@@ -301,13 +298,10 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
   }) {
     return loading?.call();
@@ -318,13 +312,10 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
     required TResult orElse(),
   }) {
@@ -339,6 +330,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -350,6 +342,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -361,6 +354,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -374,6 +368,178 @@ class _$LoadingImpl implements _Loading {
 
 abstract class _Loading implements HomeState {
   const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String failure});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
+  const _$FailureImpl(this.failure);
+
+  @override
+  final String failure;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState.failure(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState.failure'))
+      ..add(DiagnosticsProperty('failure', failure));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String failure) failure,
+    required TResult Function(String message) error,
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
+        success,
+  }) {
+    return failure(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
+    TResult? Function(String message)? error,
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
+  }) {
+    return failure?.call(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String failure)? failure,
+    TResult Function(String message)? error,
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this.failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure implements HomeState {
+  const factory _Failure(final String failure) = _$FailureImpl;
+
+  String get failure;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -411,15 +577,23 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
+class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   const _$ErrorImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState.error'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -446,13 +620,10 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
         success,
   }) {
     return error(message);
@@ -463,13 +634,10 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
   }) {
     return error?.call(message);
@@ -480,13 +648,10 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
     required TResult orElse(),
   }) {
@@ -501,6 +666,7 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -512,6 +678,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -523,6 +690,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -553,11 +721,10 @@ abstract class _$$SuccessImplCopyWith<$Res> {
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<GetProductModel> data,
-      List<CategoryModel> categoryData,
-      List<GetProductionModel> getAllProduction,
-      String? selectedPaymentMethod,
-      String? selectedBank});
+      {List<PosStockItemModel> posStock,
+      int currentPage,
+      bool hasMorePages,
+      int totalItems});
 }
 
 /// @nodoc
@@ -573,88 +740,75 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
-    Object? categoryData = null,
-    Object? getAllProduction = null,
-    Object? selectedPaymentMethod = freezed,
-    Object? selectedBank = freezed,
+    Object? posStock = null,
+    Object? currentPage = null,
+    Object? hasMorePages = null,
+    Object? totalItems = null,
   }) {
     return _then(_$SuccessImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<GetProductModel>,
-      categoryData: null == categoryData
-          ? _value._categoryData
-          : categoryData // ignore: cast_nullable_to_non_nullable
-              as List<CategoryModel>,
-      getAllProduction: null == getAllProduction
-          ? _value._getAllProduction
-          : getAllProduction // ignore: cast_nullable_to_non_nullable
-              as List<GetProductionModel>,
-      selectedPaymentMethod: freezed == selectedPaymentMethod
-          ? _value.selectedPaymentMethod
-          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      selectedBank: freezed == selectedBank
-          ? _value.selectedBank
-          : selectedBank // ignore: cast_nullable_to_non_nullable
-              as String?,
+      posStock: null == posStock
+          ? _value._posStock
+          : posStock // ignore: cast_nullable_to_non_nullable
+              as List<PosStockItemModel>,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMorePages: null == hasMorePages
+          ? _value.hasMorePages
+          : hasMorePages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalItems: null == totalItems
+          ? _value.totalItems
+          : totalItems // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
+class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   const _$SuccessImpl(
-      {final List<GetProductModel> data = const [],
-      final List<CategoryModel> categoryData = const [],
-      final List<GetProductionModel> getAllProduction = const [],
-      this.selectedPaymentMethod = "",
-      this.selectedBank = ""})
-      : _data = data,
-        _categoryData = categoryData,
-        _getAllProduction = getAllProduction;
+      {final List<PosStockItemModel> posStock = const [],
+      this.currentPage = 1,
+      this.hasMorePages = false,
+      this.totalItems = 0})
+      : _posStock = posStock;
 
-  final List<GetProductModel> _data;
+  final List<PosStockItemModel> _posStock;
   @override
   @JsonKey()
-  List<GetProductModel> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
+  List<PosStockItemModel> get posStock {
+    if (_posStock is EqualUnmodifiableListView) return _posStock;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
-  final List<CategoryModel> _categoryData;
-  @override
-  @JsonKey()
-  List<CategoryModel> get categoryData {
-    if (_categoryData is EqualUnmodifiableListView) return _categoryData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categoryData);
-  }
-
-  final List<GetProductionModel> _getAllProduction;
-  @override
-  @JsonKey()
-  List<GetProductionModel> get getAllProduction {
-    if (_getAllProduction is EqualUnmodifiableListView)
-      return _getAllProduction;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_getAllProduction);
+    return EqualUnmodifiableListView(_posStock);
   }
 
   @override
   @JsonKey()
-  final String? selectedPaymentMethod;
+  final int currentPage;
   @override
   @JsonKey()
-  final String? selectedBank;
+  final bool hasMorePages;
+  @override
+  @JsonKey()
+  final int totalItems;
 
   @override
-  String toString() {
-    return 'HomeState.success(data: $data, categoryData: $categoryData, getAllProduction: $getAllProduction, selectedPaymentMethod: $selectedPaymentMethod, selectedBank: $selectedBank)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState.success(posStock: $posStock, currentPage: $currentPage, hasMorePages: $hasMorePages, totalItems: $totalItems)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState.success'))
+      ..add(DiagnosticsProperty('posStock', posStock))
+      ..add(DiagnosticsProperty('currentPage', currentPage))
+      ..add(DiagnosticsProperty('hasMorePages', hasMorePages))
+      ..add(DiagnosticsProperty('totalItems', totalItems));
   }
 
   @override
@@ -662,25 +816,22 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
-            const DeepCollectionEquality()
-                .equals(other._categoryData, _categoryData) &&
-            const DeepCollectionEquality()
-                .equals(other._getAllProduction, _getAllProduction) &&
-            (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
-                other.selectedPaymentMethod == selectedPaymentMethod) &&
-            (identical(other.selectedBank, selectedBank) ||
-                other.selectedBank == selectedBank));
+            const DeepCollectionEquality().equals(other._posStock, _posStock) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.hasMorePages, hasMorePages) ||
+                other.hasMorePages == hasMorePages) &&
+            (identical(other.totalItems, totalItems) ||
+                other.totalItems == totalItems));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_data),
-      const DeepCollectionEquality().hash(_categoryData),
-      const DeepCollectionEquality().hash(_getAllProduction),
-      selectedPaymentMethod,
-      selectedBank);
+      const DeepCollectionEquality().hash(_posStock),
+      currentPage,
+      hasMorePages,
+      totalItems);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -695,17 +846,13 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)
+    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)
         success,
   }) {
-    return success(data, categoryData, getAllProduction, selectedPaymentMethod,
-        selectedBank);
+    return success(posStock, currentPage, hasMorePages, totalItems);
   }
 
   @override
@@ -713,17 +860,13 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
   }) {
-    return success?.call(data, categoryData, getAllProduction,
-        selectedPaymentMethod, selectedBank);
+    return success?.call(posStock, currentPage, hasMorePages, totalItems);
   }
 
   @override
@@ -731,19 +874,15 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(
-            List<GetProductModel> data,
-            List<CategoryModel> categoryData,
-            List<GetProductionModel> getAllProduction,
-            String? selectedPaymentMethod,
-            String? selectedBank)?
+    TResult Function(List<PosStockItemModel> posStock, int currentPage,
+            bool hasMorePages, int totalItems)?
         success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data, categoryData, getAllProduction,
-          selectedPaymentMethod, selectedBank);
+      return success(posStock, currentPage, hasMorePages, totalItems);
     }
     return orElse();
   }
@@ -753,6 +892,7 @@ class _$SuccessImpl implements _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -764,6 +904,7 @@ class _$SuccessImpl implements _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -775,6 +916,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -788,17 +930,15 @@ class _$SuccessImpl implements _Success {
 
 abstract class _Success implements HomeState {
   const factory _Success(
-      {final List<GetProductModel> data,
-      final List<CategoryModel> categoryData,
-      final List<GetProductionModel> getAllProduction,
-      final String? selectedPaymentMethod,
-      final String? selectedBank}) = _$SuccessImpl;
+      {final List<PosStockItemModel> posStock,
+      final int currentPage,
+      final bool hasMorePages,
+      final int totalItems}) = _$SuccessImpl;
 
-  List<GetProductModel> get data;
-  List<CategoryModel> get categoryData;
-  List<GetProductionModel> get getAllProduction;
-  String? get selectedPaymentMethod;
-  String? get selectedBank;
+  List<PosStockItemModel> get posStock;
+  int get currentPage;
+  bool get hasMorePages;
+  int get totalItems;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

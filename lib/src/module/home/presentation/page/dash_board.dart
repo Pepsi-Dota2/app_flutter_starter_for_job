@@ -2,32 +2,34 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
-import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/profile_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/page/profile_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
-  const DashBoardPage({super.key});
+  const DashBoardPage({super.key, required this.userInfo});
+  final CodeModel userInfo;
 
   @override
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<HomeCubit>()..fetchData(),
+          create: (context) => getIt<HomeCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt<DashboardCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt<ProfileCubit>()..getProfile(),
+          create: (context) => getIt<ProfileCubit>(),
         ),
       ],
       child: this,
@@ -41,16 +43,21 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       body: PageView(
         controller: pageController,
+         physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
         },
-        children: const [HomePage(), LocationPage(), ProfilePage()],
+        children: [
+          HomePage(userInfo: userInfo),
+          const CartPage(),
+          const ProfilePage()
+        ],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           return AnimatedBottomNavigationBar(
-            icons: const [Icons.home, Icons.map, Icons.person],
+            icons: const [Icons.home, Icons.shopping_cart, Icons.person],
             activeIndex: state.index,
             gapLocation: GapLocation.end,
             notchSmoothness: NotchSmoothness.softEdge,

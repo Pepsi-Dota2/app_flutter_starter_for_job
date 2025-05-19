@@ -1,0 +1,2 @@
+/Users/pepsi/Desktop/app_flutter_starter_for_job/android/app/.cxx/Debug/4o5a6318/x86/CMakeFiles/edit_cache.dir
+/Users/pepsi/Desktop/app_flutter_starter_for_job/android/app/.cxx/Debug/4o5a6318/x86/CMakeFiles/rebuild_cache.dir

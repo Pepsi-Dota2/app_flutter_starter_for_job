@@ -38,6 +38,7 @@ class _TextInputState extends State<TextInput> {
           ),
         ),
         TextFormField(
+          
           focusNode: _focusNode,
           controller: widget.controller,
           autofocus: true,

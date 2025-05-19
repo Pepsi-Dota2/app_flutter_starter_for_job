@@ -4,23 +4,23 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
     required this.image,
-    required this.title,
+    this.title,
     this.rating,
     this.reviews,
     required this.price,
     required this.desc,
   });
-  
+
   final String image;
-  final String title;
-  final String desc;
+  final String? title;
+  final int desc;
   final double? rating;
   final int? reviews;
-  final double price;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
-       final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -30,7 +30,7 @@ class ProductWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 2, 
+            flex: 3,
             child: Stack(
               children: [
                 SizedBox(
@@ -51,29 +51,18 @@ class ProductWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.favorite_border,
-                      color: Colors.grey,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
               ],
             ),
           ),
           Expanded(
-            flex: 3, 
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    title ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -83,7 +72,7 @@ class ProductWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    desc,
+                    "${desc}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -91,35 +80,8 @@ class ProductWidget extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          size: 16,
-                          color: Colors.amber,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          "${rating ?? 0}",
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '| ${reviews ?? 0}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  const Spacer(),
                   Text(
-                    '\$${price.toStringAsFixed(2)}',
+                    '\$${price}',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

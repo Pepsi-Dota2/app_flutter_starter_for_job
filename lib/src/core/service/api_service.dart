@@ -1,7 +1,7 @@
 import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/category_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/get_product_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/domain/model/product_model.dart';
+import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
+import 'package:app_flutter_starter_for_job/src/core/model/pos_stock_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -14,12 +14,9 @@ abstract class AppApi {
   @factoryMethod
   factory AppApi(Dio dio) = _AppApi;
 
-  @GET(ApiPath.getPhotos)
-  Future<List<GetProductModel>> getProduct();
+  @POST(ApiPath.authLogin)
+  Future<AuthModel> login(@Body() Map<String, dynamic> body);
 
-  @GET(ApiPath.getCategory)
-  Future<List<CategoryModel>> getCategory();
-
-  @GET(ApiPath.getProducts)
-  Future<List<GetProductionModel>> getAllProduct();
+  @POST(ApiPath.posStock)
+  Future<PosStockModel> posStock(@Body() Map<String, dynamic> body);
 }
