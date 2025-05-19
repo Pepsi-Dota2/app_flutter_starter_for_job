@@ -6,7 +6,7 @@ import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dar
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
-import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
+import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/cubit/profile_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
 import 'package:auto_route/auto_route.dart';
@@ -43,20 +43,21 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       body: PageView(
         controller: pageController,
+         physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
         },
         children: [
           HomePage(userInfo: userInfo),
-          const LocationPage(),
+          const CartPage(),
           const ProfilePage()
         ],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           return AnimatedBottomNavigationBar(
-            icons: const [Icons.home, Icons.map, Icons.person],
+            icons: const [Icons.home, Icons.shopping_cart, Icons.person],
             activeIndex: state.index,
             gapLocation: GapLocation.end,
             notchSmoothness: NotchSmoothness.softEdge,

@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CartRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CartPage(),
+      );
+    },
     DashBoardRoute.name: (routeData) {
       final args = routeData.argsAs<DashBoardRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -34,12 +40,6 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           userInfo: args.userInfo,
         ),
-      );
-    },
-    LocationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const LocationPage(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -69,6 +69,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [CartPage]
+class CartRoute extends PageRouteInfo<void> {
+  const CartRoute({List<PageRouteInfo>? children})
+      : super(
+          CartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CartRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -144,20 +158,6 @@ class HomeRouteArgs {
   String toString() {
     return 'HomeRouteArgs{key: $key, userInfo: $userInfo}';
   }
-}
-
-/// generated route for
-/// [LocationPage]
-class LocationRoute extends PageRouteInfo<void> {
-  const LocationRoute({List<PageRouteInfo>? children})
-      : super(
-          LocationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'LocationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

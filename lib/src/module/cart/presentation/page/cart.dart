@@ -2,15 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class LocationPage extends StatelessWidget {
-  const LocationPage({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Location"),
+          title: const Text("Cart"),
           centerTitle: true,
+          backgroundColor: Colors.amber.shade700,
         ),
         body: Center(child: Text("location")));
   }

@@ -1,8 +1,5 @@
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
-import 'package:app_flutter_starter_for_job/src/core/widgets/custom_button_login.dart';
-import 'package:app_flutter_starter_for_job/src/core/widgets/custom_formfield.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/core/widgets/loding_dialog.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/widgets/password_input.dart';
@@ -34,9 +31,13 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
-          loading: () => LoadingDialog.showLoadingDialog(context),
-          success: (user) {
+          loading: () {
             LoadingDialog.hideLoadingDialog(context);
+            LoadingDialog.showLoadingDialog(context);
+          },
+          success: (user) {
+            // LoadingDialog.hideLoadingDialog(context);
+            LoadingDialog.showLoadingDialog(context);
             context.router.replace(DashBoardRoute(userInfo: user));
           },
           failure: (message) {
@@ -75,12 +76,14 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
                         hintText: "***********",
                         header: "Password"),
                     const SizedBox(height: 30),
-                  RadiusButton(
+                    RadiusButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate() != false) {
                           final username = usernameController.text.trim();
                           final password = pwdController.text.trim();
-                          context.read<LoginCubit>().loginUser(username, password);
+                          context
+                              .read<LoginCubit>()
+                              .loginUser(username, password);
                         }
                       },
                       title: "Sign In",

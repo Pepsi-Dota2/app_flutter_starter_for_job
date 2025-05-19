@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
-import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +20,18 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getProduct() async {
     emit(const HomeState.loading());
     try {
+      
+      final prefs = await SharedPreferences.getInstance();
+      final String? cachedData = prefs.getString('cached_products');
+      final int? cacheTimestamp = prefs.getInt('products_cache_timestamp');
+      final bool isCacheValid = cacheTimestamp != null && DateTime.now().millisecondsSinceEpoch - cacheTimestamp < 3600000;
+      if (cachedData != null && isCacheValid) {
+        final List<dynamic> dataList = jsonDecode(cachedData);
+        final products =
+            dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
+        emit(HomeState.success(posStock: products));
+        return;
+      }
       final response = await dio.post(
         ApiPath.posStock,
         data: {
@@ -33,7 +43,12 @@ class HomeCubit extends Cubit<HomeState> {
         },
       );
       final List<dynamic> dataList = response.data['list'];
-      final products =dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
+      final products =
+          dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
+      await prefs.setString('cached_products', jsonEncode(dataList));
+      await prefs.setInt(
+          'products_cache_timestamp', DateTime.now().millisecondsSinceEpoch);
+
       emit(HomeState.success(posStock: products));
     } catch (e) {
       emit(HomeState.failure(e.toString()));

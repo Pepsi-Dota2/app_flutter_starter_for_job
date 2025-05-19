@@ -68,6 +68,12 @@ class ProfilePage extends StatelessWidget implements AutoRouteWrapper {
                 ),
               ),
               const Gap(20),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text("ກົດເພື່ອເລືອກລູກຄ້າ"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {},
+              )
             ],
           ),
         ));

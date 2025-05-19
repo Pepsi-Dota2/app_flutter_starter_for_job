@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (_) => HomeCubit(dio, userInfo)..getProduct(),
       child: Scaffold(
-        appBar: AppBar(title: Text("Odein Store")),
+        appBar: AppBar(title: Text("Odein Store"),backgroundColor: Colors.amber.shade700,),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return state.when(

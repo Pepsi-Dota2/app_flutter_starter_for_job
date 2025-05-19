@@ -3,7 +3,7 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/da
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/search/search_page.dart';
-import 'package:app_flutter_starter_for_job/src/module/location/presentation/page/location.dart';
+import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/login_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/notification.dart';
 import 'package:app_flutter_starter_for_job/src/module/profile/presentation/page/profile_page.dart';
@@ -19,7 +19,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(page: DashBoardRoute.page),
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: LocationRoute.page),
+        AutoRoute(page: CartRoute.page),
         AutoRoute(page: SearchRoute.page),
       ];
 }
