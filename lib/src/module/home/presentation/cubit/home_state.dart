@@ -11,5 +11,6 @@ class HomeState with _$HomeState {
     @Default(1) int currentPage,
     @Default(false) bool hasMorePages,
     @Default(0) int totalItems,
+    @Default(false) bool isLoading,
   }) = _Success;
 }

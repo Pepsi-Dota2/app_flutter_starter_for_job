@@ -2,13 +2,13 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/customer_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
-import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/profile_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/customer/presentation/page/profile_page.dart';
+import 'package:app_flutter_starter_for_job/src/module/customer/presentation/page/customer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +29,7 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
           create: (context) => getIt<DashboardCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt<ProfileCubit>(),
+          create: (context) => getIt<CustomerCubit>(),
         ),
       ],
       child: this,
@@ -37,6 +37,7 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
   }
 
   @override
+
   Widget build(BuildContext context) {
     final cubit = context.read<DashboardCubit>();
     final PageController pageController = PageController();

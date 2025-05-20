@@ -23,18 +23,9 @@ mixin _$PosStockItemModel {
   String get average_cost => throw _privateConstructorUsedError;
   int get balance_qty => throw _privateConstructorUsedError;
   String get name_1 => throw _privateConstructorUsedError;
-  String get group_main => throw _privateConstructorUsedError;
-  String get group_sub => throw _privateConstructorUsedError;
-  String get ic_code => throw _privateConstructorUsedError;
-  String get ic_name => throw _privateConstructorUsedError;
-  String get ic_unit_code => throw _privateConstructorUsedError;
-  String get item_brand => throw _privateConstructorUsedError;
-  String get item_cat_name => throw _privateConstructorUsedError;
-  String get item_category => throw _privateConstructorUsedError;
-  String get main_name => throw _privateConstructorUsedError;
-  String get sale_price1 => throw _privateConstructorUsedError;
-  String get sub_name => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
   String get unit_code => throw _privateConstructorUsedError;
+  String get sale_price1 => throw _privateConstructorUsedError;
   String get url_image => throw _privateConstructorUsedError;
 
   /// Serializes this PosStockItemModel to a JSON map.
@@ -57,18 +48,9 @@ abstract class $PosStockItemModelCopyWith<$Res> {
       {String average_cost,
       int balance_qty,
       String name_1,
-      String group_main,
-      String group_sub,
-      String ic_code,
-      String ic_name,
-      String ic_unit_code,
-      String item_brand,
-      String item_cat_name,
-      String item_category,
-      String main_name,
-      String sale_price1,
-      String sub_name,
+      String code,
       String unit_code,
+      String sale_price1,
       String url_image});
 }
 
@@ -90,18 +72,9 @@ class _$PosStockItemModelCopyWithImpl<$Res, $Val extends PosStockItemModel>
     Object? average_cost = null,
     Object? balance_qty = null,
     Object? name_1 = null,
-    Object? group_main = null,
-    Object? group_sub = null,
-    Object? ic_code = null,
-    Object? ic_name = null,
-    Object? ic_unit_code = null,
-    Object? item_brand = null,
-    Object? item_cat_name = null,
-    Object? item_category = null,
-    Object? main_name = null,
-    Object? sale_price1 = null,
-    Object? sub_name = null,
+    Object? code = null,
     Object? unit_code = null,
+    Object? sale_price1 = null,
     Object? url_image = null,
   }) {
     return _then(_value.copyWith(
@@ -117,53 +90,17 @@ class _$PosStockItemModelCopyWithImpl<$Res, $Val extends PosStockItemModel>
           ? _value.name_1
           : name_1 // ignore: cast_nullable_to_non_nullable
               as String,
-      group_main: null == group_main
-          ? _value.group_main
-          : group_main // ignore: cast_nullable_to_non_nullable
-              as String,
-      group_sub: null == group_sub
-          ? _value.group_sub
-          : group_sub // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_code: null == ic_code
-          ? _value.ic_code
-          : ic_code // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_name: null == ic_name
-          ? _value.ic_name
-          : ic_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_unit_code: null == ic_unit_code
-          ? _value.ic_unit_code
-          : ic_unit_code // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_brand: null == item_brand
-          ? _value.item_brand
-          : item_brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_cat_name: null == item_cat_name
-          ? _value.item_cat_name
-          : item_cat_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_category: null == item_category
-          ? _value.item_category
-          : item_category // ignore: cast_nullable_to_non_nullable
-              as String,
-      main_name: null == main_name
-          ? _value.main_name
-          : main_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sale_price1: null == sale_price1
-          ? _value.sale_price1
-          : sale_price1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      sub_name: null == sub_name
-          ? _value.sub_name
-          : sub_name // ignore: cast_nullable_to_non_nullable
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
       unit_code: null == unit_code
           ? _value.unit_code
           : unit_code // ignore: cast_nullable_to_non_nullable
+              as String,
+      sale_price1: null == sale_price1
+          ? _value.sale_price1
+          : sale_price1 // ignore: cast_nullable_to_non_nullable
               as String,
       url_image: null == url_image
           ? _value.url_image
@@ -185,18 +122,9 @@ abstract class _$$PosStockItemModelImplCopyWith<$Res>
       {String average_cost,
       int balance_qty,
       String name_1,
-      String group_main,
-      String group_sub,
-      String ic_code,
-      String ic_name,
-      String ic_unit_code,
-      String item_brand,
-      String item_cat_name,
-      String item_category,
-      String main_name,
-      String sale_price1,
-      String sub_name,
+      String code,
       String unit_code,
+      String sale_price1,
       String url_image});
 }
 
@@ -216,18 +144,9 @@ class __$$PosStockItemModelImplCopyWithImpl<$Res>
     Object? average_cost = null,
     Object? balance_qty = null,
     Object? name_1 = null,
-    Object? group_main = null,
-    Object? group_sub = null,
-    Object? ic_code = null,
-    Object? ic_name = null,
-    Object? ic_unit_code = null,
-    Object? item_brand = null,
-    Object? item_cat_name = null,
-    Object? item_category = null,
-    Object? main_name = null,
-    Object? sale_price1 = null,
-    Object? sub_name = null,
+    Object? code = null,
     Object? unit_code = null,
+    Object? sale_price1 = null,
     Object? url_image = null,
   }) {
     return _then(_$PosStockItemModelImpl(
@@ -243,53 +162,17 @@ class __$$PosStockItemModelImplCopyWithImpl<$Res>
           ? _value.name_1
           : name_1 // ignore: cast_nullable_to_non_nullable
               as String,
-      group_main: null == group_main
-          ? _value.group_main
-          : group_main // ignore: cast_nullable_to_non_nullable
-              as String,
-      group_sub: null == group_sub
-          ? _value.group_sub
-          : group_sub // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_code: null == ic_code
-          ? _value.ic_code
-          : ic_code // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_name: null == ic_name
-          ? _value.ic_name
-          : ic_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      ic_unit_code: null == ic_unit_code
-          ? _value.ic_unit_code
-          : ic_unit_code // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_brand: null == item_brand
-          ? _value.item_brand
-          : item_brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_cat_name: null == item_cat_name
-          ? _value.item_cat_name
-          : item_cat_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      item_category: null == item_category
-          ? _value.item_category
-          : item_category // ignore: cast_nullable_to_non_nullable
-              as String,
-      main_name: null == main_name
-          ? _value.main_name
-          : main_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sale_price1: null == sale_price1
-          ? _value.sale_price1
-          : sale_price1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      sub_name: null == sub_name
-          ? _value.sub_name
-          : sub_name // ignore: cast_nullable_to_non_nullable
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
       unit_code: null == unit_code
           ? _value.unit_code
           : unit_code // ignore: cast_nullable_to_non_nullable
+              as String,
+      sale_price1: null == sale_price1
+          ? _value.sale_price1
+          : sale_price1 // ignore: cast_nullable_to_non_nullable
               as String,
       url_image: null == url_image
           ? _value.url_image
@@ -306,18 +189,9 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
       {this.average_cost = "",
       this.balance_qty = 0,
       this.name_1 = "",
-      this.group_main = "",
-      this.group_sub = "",
-      this.ic_code = "",
-      this.ic_name = "",
-      this.ic_unit_code = "",
-      this.item_brand = "",
-      this.item_cat_name = "",
-      this.item_category = "",
-      this.main_name = "",
-      this.sale_price1 = "",
-      this.sub_name = "",
+      this.code = "",
       this.unit_code = "",
+      this.sale_price1 = "",
       this.url_image = ""});
 
   factory _$PosStockItemModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -334,47 +208,20 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
   final String name_1;
   @override
   @JsonKey()
-  final String group_main;
-  @override
-  @JsonKey()
-  final String group_sub;
-  @override
-  @JsonKey()
-  final String ic_code;
-  @override
-  @JsonKey()
-  final String ic_name;
-  @override
-  @JsonKey()
-  final String ic_unit_code;
-  @override
-  @JsonKey()
-  final String item_brand;
-  @override
-  @JsonKey()
-  final String item_cat_name;
-  @override
-  @JsonKey()
-  final String item_category;
-  @override
-  @JsonKey()
-  final String main_name;
-  @override
-  @JsonKey()
-  final String sale_price1;
-  @override
-  @JsonKey()
-  final String sub_name;
+  final String code;
   @override
   @JsonKey()
   final String unit_code;
+  @override
+  @JsonKey()
+  final String sale_price1;
   @override
   @JsonKey()
   final String url_image;
 
   @override
   String toString() {
-    return 'PosStockItemModel(average_cost: $average_cost, balance_qty: $balance_qty, name_1: $name_1, group_main: $group_main, group_sub: $group_sub, ic_code: $ic_code, ic_name: $ic_name, ic_unit_code: $ic_unit_code, item_brand: $item_brand, item_cat_name: $item_cat_name, item_category: $item_category, main_name: $main_name, sale_price1: $sale_price1, sub_name: $sub_name, unit_code: $unit_code, url_image: $url_image)';
+    return 'PosStockItemModel(average_cost: $average_cost, balance_qty: $balance_qty, name_1: $name_1, code: $code, unit_code: $unit_code, sale_price1: $sale_price1, url_image: $url_image)';
   }
 
   @override
@@ -387,52 +234,19 @@ class _$PosStockItemModelImpl implements _PosStockItemModel {
             (identical(other.balance_qty, balance_qty) ||
                 other.balance_qty == balance_qty) &&
             (identical(other.name_1, name_1) || other.name_1 == name_1) &&
-            (identical(other.group_main, group_main) ||
-                other.group_main == group_main) &&
-            (identical(other.group_sub, group_sub) ||
-                other.group_sub == group_sub) &&
-            (identical(other.ic_code, ic_code) || other.ic_code == ic_code) &&
-            (identical(other.ic_name, ic_name) || other.ic_name == ic_name) &&
-            (identical(other.ic_unit_code, ic_unit_code) ||
-                other.ic_unit_code == ic_unit_code) &&
-            (identical(other.item_brand, item_brand) ||
-                other.item_brand == item_brand) &&
-            (identical(other.item_cat_name, item_cat_name) ||
-                other.item_cat_name == item_cat_name) &&
-            (identical(other.item_category, item_category) ||
-                other.item_category == item_category) &&
-            (identical(other.main_name, main_name) ||
-                other.main_name == main_name) &&
-            (identical(other.sale_price1, sale_price1) ||
-                other.sale_price1 == sale_price1) &&
-            (identical(other.sub_name, sub_name) ||
-                other.sub_name == sub_name) &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.unit_code, unit_code) ||
                 other.unit_code == unit_code) &&
+            (identical(other.sale_price1, sale_price1) ||
+                other.sale_price1 == sale_price1) &&
             (identical(other.url_image, url_image) ||
                 other.url_image == url_image));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      average_cost,
-      balance_qty,
-      name_1,
-      group_main,
-      group_sub,
-      ic_code,
-      ic_name,
-      ic_unit_code,
-      item_brand,
-      item_cat_name,
-      item_category,
-      main_name,
-      sale_price1,
-      sub_name,
-      unit_code,
-      url_image);
+  int get hashCode => Object.hash(runtimeType, average_cost, balance_qty,
+      name_1, code, unit_code, sale_price1, url_image);
 
   /// Create a copy of PosStockItemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -456,18 +270,9 @@ abstract class _PosStockItemModel implements PosStockItemModel {
       {final String average_cost,
       final int balance_qty,
       final String name_1,
-      final String group_main,
-      final String group_sub,
-      final String ic_code,
-      final String ic_name,
-      final String ic_unit_code,
-      final String item_brand,
-      final String item_cat_name,
-      final String item_category,
-      final String main_name,
-      final String sale_price1,
-      final String sub_name,
+      final String code,
       final String unit_code,
+      final String sale_price1,
       final String url_image}) = _$PosStockItemModelImpl;
 
   factory _PosStockItemModel.fromJson(Map<String, dynamic> json) =
@@ -480,29 +285,11 @@ abstract class _PosStockItemModel implements PosStockItemModel {
   @override
   String get name_1;
   @override
-  String get group_main;
-  @override
-  String get group_sub;
-  @override
-  String get ic_code;
-  @override
-  String get ic_name;
-  @override
-  String get ic_unit_code;
-  @override
-  String get item_brand;
-  @override
-  String get item_cat_name;
-  @override
-  String get item_category;
-  @override
-  String get main_name;
-  @override
-  String get sale_price1;
-  @override
-  String get sub_name;
+  String get code;
   @override
   String get unit_code;
+  @override
+  String get sale_price1;
   @override
   String get url_image;
 

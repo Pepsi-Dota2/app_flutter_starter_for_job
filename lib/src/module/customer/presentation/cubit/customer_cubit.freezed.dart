@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_cubit.dart';
+part of 'customer_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,16 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$CustomerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,9 +31,7 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,9 +40,7 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,22 +75,23 @@ mixin _$HomeState {
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $CustomerStateCopyWith<$Res> {
+  factory $CustomerStateCopyWith(
+          CustomerState value, $Res Function(CustomerState) then) =
+      _$CustomerStateCopyWithImpl<$Res, CustomerState>;
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
+    implements $CustomerStateCopyWith<$Res> {
+  _$CustomerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -109,30 +104,24 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$CustomerStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'HomeState.initial'));
+  String toString() {
+    return 'CustomerState.initial()';
   }
 
   @override
@@ -151,9 +140,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) {
     return initial();
   }
@@ -165,9 +152,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) {
     return initial?.call();
   }
@@ -179,9 +164,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -231,7 +214,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeState {
+abstract class _Initial implements CustomerState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -244,30 +227,24 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$CustomerStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+class _$LoadingImpl implements _Loading {
   const _$LoadingImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'HomeState.loading'));
+  String toString() {
+    return 'CustomerState.loading()';
   }
 
   @override
@@ -286,9 +263,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) {
     return loading();
   }
@@ -300,9 +275,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) {
     return loading?.call();
   }
@@ -314,9 +287,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -366,7 +337,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   }
 }
 
-abstract class _Loading implements HomeState {
+abstract class _Loading implements CustomerState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -381,13 +352,13 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$CustomerStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -405,23 +376,15 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
+class _$FailureImpl implements _Failure {
   const _$FailureImpl(this.failure);
 
   @override
   final String failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.failure(failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'HomeState.failure'))
-      ..add(DiagnosticsProperty('failure', failure));
+  String toString() {
+    return 'CustomerState.failure(failure: $failure)';
   }
 
   @override
@@ -435,7 +398,7 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, failure);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -450,9 +413,7 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) {
     return failure(this.failure);
   }
@@ -464,9 +425,7 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) {
     return failure?.call(this.failure);
   }
@@ -478,9 +437,7 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -530,12 +487,12 @@ class _$FailureImpl with DiagnosticableTreeMixin implements _Failure {
   }
 }
 
-abstract class _Failure implements HomeState {
+abstract class _Failure implements CustomerState {
   const factory _Failure(final String failure) = _$FailureImpl;
 
   String get failure;
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -553,13 +510,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$CustomerStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -577,23 +534,15 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
+class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.error(message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'HomeState.error'))
-      ..add(DiagnosticsProperty('message', message));
+  String toString() {
+    return 'CustomerState.error(message: $message)';
   }
 
   @override
@@ -607,7 +556,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -622,9 +571,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) {
     return error(message);
   }
@@ -636,9 +583,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) {
     return error?.call(message);
   }
@@ -650,9 +595,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -702,12 +645,12 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements HomeState {
+abstract class _Error implements CustomerState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -720,106 +663,51 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<PosStockItemModel> posStock,
-      int currentPage,
-      bool hasMorePages,
-      int totalItems,
-      bool isLoading});
+  $Res call({List<CustomerModel> customer});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$CustomerStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posStock = null,
-    Object? currentPage = null,
-    Object? hasMorePages = null,
-    Object? totalItems = null,
-    Object? isLoading = null,
+    Object? customer = null,
   }) {
     return _then(_$SuccessImpl(
-      posStock: null == posStock
-          ? _value._posStock
-          : posStock // ignore: cast_nullable_to_non_nullable
-              as List<PosStockItemModel>,
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      hasMorePages: null == hasMorePages
-          ? _value.hasMorePages
-          : hasMorePages // ignore: cast_nullable_to_non_nullable
-              as bool,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
+      customer: null == customer
+          ? _value._customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as List<CustomerModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
-  const _$SuccessImpl(
-      {final List<PosStockItemModel> posStock = const [],
-      this.currentPage = 1,
-      this.hasMorePages = false,
-      this.totalItems = 0,
-      this.isLoading = false})
-      : _posStock = posStock;
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl({final List<CustomerModel> customer = const []})
+      : _customer = customer;
 
-  final List<PosStockItemModel> _posStock;
+  final List<CustomerModel> _customer;
   @override
   @JsonKey()
-  List<PosStockItemModel> get posStock {
-    if (_posStock is EqualUnmodifiableListView) return _posStock;
+  List<CustomerModel> get customer {
+    if (_customer is EqualUnmodifiableListView) return _customer;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posStock);
+    return EqualUnmodifiableListView(_customer);
   }
 
   @override
-  @JsonKey()
-  final int currentPage;
-  @override
-  @JsonKey()
-  final bool hasMorePages;
-  @override
-  @JsonKey()
-  final int totalItems;
-  @override
-  @JsonKey()
-  final bool isLoading;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.success(posStock: $posStock, currentPage: $currentPage, hasMorePages: $hasMorePages, totalItems: $totalItems, isLoading: $isLoading)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'HomeState.success'))
-      ..add(DiagnosticsProperty('posStock', posStock))
-      ..add(DiagnosticsProperty('currentPage', currentPage))
-      ..add(DiagnosticsProperty('hasMorePages', hasMorePages))
-      ..add(DiagnosticsProperty('totalItems', totalItems))
-      ..add(DiagnosticsProperty('isLoading', isLoading));
+  String toString() {
+    return 'CustomerState.success(customer: $customer)';
   }
 
   @override
@@ -827,27 +715,14 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._posStock, _posStock) &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage) &&
-            (identical(other.hasMorePages, hasMorePages) ||
-                other.hasMorePages == hasMorePages) &&
-            (identical(other.totalItems, totalItems) ||
-                other.totalItems == totalItems) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+            const DeepCollectionEquality().equals(other._customer, _customer));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_posStock),
-      currentPage,
-      hasMorePages,
-      totalItems,
-      isLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_customer));
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -862,11 +737,9 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function() loading,
     required TResult Function(String failure) failure,
     required TResult Function(String message) error,
-    required TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)
-        success,
+    required TResult Function(List<CustomerModel> customer) success,
   }) {
-    return success(posStock, currentPage, hasMorePages, totalItems, isLoading);
+    return success(customer);
   }
 
   @override
@@ -876,12 +749,9 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function()? loading,
     TResult? Function(String failure)? failure,
     TResult? Function(String message)? error,
-    TResult? Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult? Function(List<CustomerModel> customer)? success,
   }) {
-    return success?.call(
-        posStock, currentPage, hasMorePages, totalItems, isLoading);
+    return success?.call(customer);
   }
 
   @override
@@ -891,14 +761,11 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function()? loading,
     TResult Function(String failure)? failure,
     TResult Function(String message)? error,
-    TResult Function(List<PosStockItemModel> posStock, int currentPage,
-            bool hasMorePages, int totalItems, bool isLoading)?
-        success,
+    TResult Function(List<CustomerModel> customer)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(
-          posStock, currentPage, hasMorePages, totalItems, isLoading);
+      return success(customer);
     }
     return orElse();
   }
@@ -944,21 +811,12 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   }
 }
 
-abstract class _Success implements HomeState {
-  const factory _Success(
-      {final List<PosStockItemModel> posStock,
-      final int currentPage,
-      final bool hasMorePages,
-      final int totalItems,
-      final bool isLoading}) = _$SuccessImpl;
+abstract class _Success implements CustomerState {
+  const factory _Success({final List<CustomerModel> customer}) = _$SuccessImpl;
 
-  List<PosStockItemModel> get posStock;
-  int get currentPage;
-  bool get hasMorePages;
-  int get totalItems;
-  bool get isLoading;
+  List<CustomerModel> get customer;
 
-  /// Create a copy of HomeState
+  /// Create a copy of CustomerState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
