@@ -15,12 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CartRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CartPage(),
-      );
-    },
     DashBoardRoute.name: (routeData) {
       final args = routeData.argsAs<DashBoardRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -30,6 +24,16 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           userInfo: args.userInfo,
         )),
+      );
+    },
+    DetailProductRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailProductRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DetailProductPage(
+          key: args.key,
+          code: args.code,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -72,20 +76,6 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [CartPage]
-class CartRoute extends PageRouteInfo<void> {
-  const CartRoute({List<PageRouteInfo>? children})
-      : super(
-          CartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CartRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [DashBoardPage]
 class DashBoardRoute extends PageRouteInfo<DashBoardRouteArgs> {
   DashBoardRoute({
@@ -120,6 +110,44 @@ class DashBoardRouteArgs {
   @override
   String toString() {
     return 'DashBoardRouteArgs{key: $key, userInfo: $userInfo}';
+  }
+}
+
+/// generated route for
+/// [DetailProductPage]
+class DetailProductRoute extends PageRouteInfo<DetailProductRouteArgs> {
+  DetailProductRoute({
+    Key? key,
+    required String code,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DetailProductRoute.name,
+          args: DetailProductRouteArgs(
+            key: key,
+            code: code,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'DetailProductRoute';
+
+  static const PageInfo<DetailProductRouteArgs> page =
+      PageInfo<DetailProductRouteArgs>(name);
+}
+
+class DetailProductRouteArgs {
+  const DetailProductRouteArgs({
+    this.key,
+    required this.code,
+  });
+
+  final Key? key;
+
+  final String code;
+
+  @override
+  String toString() {
+    return 'DetailProductRouteArgs{key: $key, code: $code}';
   }
 }
 

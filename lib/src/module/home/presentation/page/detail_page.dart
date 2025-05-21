@@ -1,53 +1,48 @@
-// import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/payment_page.dart';
-// import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_detail.dart';
-// import 'package:auto_route/auto_route.dart';
-// import 'package:flutter/material.dart';
+import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_detail.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// @RoutePage()
-// class DetailProductPage extends StatelessWidget {
-//   final String? desc;
-//   final String? title;
-//   final String? location;
-//   final String? imageUrl;
-//   final double? price;
-//   final String? followerCount;
-//   final String? itemCount;
+@RoutePage()
+class DetailProductPage extends StatelessWidget {
+  final String code;
+  const DetailProductPage({super.key, required this.code});
 
-//   const DetailProductPage({
-//     super.key,
-//     this.desc,
-//     this.title,
-//     this.location,
-//     this.imageUrl,
-//     this.price,
-//     this.followerCount,
-//     this.itemCount,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("Product Detail"),
-//         centerTitle: true,
-//       ),
-//       body: SingleChildScrollView(
-//         child: ProductCardDetail(
-//           desc: desc ?? "Unknown Product",
-//           title: title ?? "Unknown Seller",
-//           location: location ?? "Unknown Location",
-//           imageUrl: imageUrl ?? "",
-//           price: price ?? 0.0,
-//           followerCount: followerCount ?? "0",
-//           itemCount: itemCount ?? "0",
-//           onBuyNow: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(builder: (context) => const PaymentMethodSelector()),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<HomeCubit>()..getProductDetailByCode(code),
+      child: Scaffold(
+        appBar: AppBar(title: const Text("Product Detail")),
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const Center(child: Text('Ready')),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              failure: (msg) => Center(child: Text('❌ $msg')),
+              error: (msg) => Center(child: Text('❌ $msg')),
+              success: (products, productDetail, currentPage, hasMorePages) {
+                return SingleChildScrollView(
+                  child: ProductCardDetail(
+                    desc: productDetail!.name_1,
+                    title: productDetail.code,
+                    location: "Warehouse",
+                    imageUrl: productDetail.url_image,
+                    price: double.tryParse(productDetail.sale_price1) ?? 0.0,
+                    followerCount: "0",
+                    itemCount: productDetail.balance_qty.toString(),
+                    onBuyNow: () {},
+                  ),
+                );
+              },
+              loadMore: (_, __, ___) =>
+                  const Center(child: CircularProgressIndicator()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

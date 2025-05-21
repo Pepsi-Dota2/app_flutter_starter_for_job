@@ -19,7 +19,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(page: DashBoardRoute.page),
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: CartRoute.page),
         AutoRoute(page: SearchRoute.page),
+        AutoRoute(page: DetailProductRoute.page),
       ];
 }

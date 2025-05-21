@@ -9,6 +9,7 @@ class ProductWidget extends StatelessWidget {
     this.reviews,
     required this.price,
     required this.desc,
+    this.onClick,
   });
 
   final String image;
@@ -17,6 +18,7 @@ class ProductWidget extends StatelessWidget {
   final double? rating;
   final int? reviews;
   final String price;
+  final Function()? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +82,29 @@ class ProductWidget extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Text(
-                    '\$${price}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '\$${price}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: onClick,
+                          child: Container(
+                            child: Icon(
+                              Icons.shopping_cart,
+                              color: Colors.green.shade500,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
