@@ -16,10 +16,7 @@ part 'home_cubit.freezed.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this.dio, this.userInfo)
-      : super(
-          const HomeState.initial(),
-        );
+  HomeCubit(this.dio, this.userInfo): super( const HomeState.initial(),);
   final ScrollController scrollController = ScrollController();
   final Dio dio;
   final CodeModel userInfo;
@@ -116,28 +113,123 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<PosStockItemModel> getProductDetailByCode(String code) async {
+  Future<PosStockItemModel?> getProductDetailByCode(String code) async {
     try {
+      emit(const HomeState.loading());
+
+      print("🔍 Searching for product with code: $code");
+
       final response = await dio.post(
         ApiPath.posStock,
         data: {
-          "code": code,
           "wh_code": userInfo.ic_wht,
           "sh_code": userInfo.ic_shelf,
-          "currency_code": "01",
           "cust_group_main": userInfo.cust_group_main,
           "cust_group_sub": userInfo.cust_group_sub.toString(),
-          "group_main": "14"
+          "group_main": "14",
+          "currency_code": "01",
+          "page": 1,
+          "limit": 100
         },
       );
 
-      if (response.statusCode == 200 && response.data is Map) {
-        return PosStockItemModel.fromJson(response.data);
+      print("📊 Response status: ${response.statusCode}");
+      print("📊 Response type: ${response.data.runtimeType}");
+
+      if (response.statusCode == 200) {
+        // Handle the response when it's a List directly
+        if (response.data is List) {
+          final productList = response.data as List;
+          print("📋 List contains ${productList.length} items");
+
+          if (productList.isNotEmpty) {
+            // Find the product with matching code
+            final matchingProductIndex =
+                productList.indexWhere((product) => product['code'] == code);
+            print(
+                "🔍 Search result for code '$code': index = $matchingProductIndex");
+
+            if (matchingProductIndex != -1) {
+              // Found the matching product
+              final matchingProduct = productList[matchingProductIndex];
+              print("✅ Found matching product: ${matchingProduct['name_1']}");
+
+              final productDetail = PosStockItemModel.fromJson(matchingProduct);
+              emit(HomeState.success(posStockDetail: productDetail));
+              return productDetail;
+            } else {
+              // Product code not found in the list
+              print("⚠️ No product found with code: $code");
+              print(
+                  "⚠️ Available codes: ${productList.take(5).map((p) => p['code']).toList()}...");
+              emit(HomeState.failure("❌ Product with code $code not found"));
+              return null;
+            }
+          } else {
+            // Empty list
+            print("⚠️ Product list is empty");
+            emit(HomeState.failure("❌ No products returned from API"));
+            return null;
+          }
+        }
+        // Handle the response when it's a Map with a 'list' key
+        else if (response.data is Map) {
+          print("📊 Response is a Map");
+
+          if (response.data.containsKey('list') &&
+              response.data['list'] is List) {
+            final productList = response.data['list'] as List;
+            print("📋 List contains ${productList.length} items");
+
+            if (productList.isNotEmpty) {
+              // Find the product with matching code
+              final matchingProductIndex =
+                  productList.indexWhere((product) => product['code'] == code);
+              print(
+                  "🔍 Search result for code '$code': index = $matchingProductIndex");
+
+              if (matchingProductIndex != -1) {
+                // Found the matching product
+                final matchingProduct = productList[matchingProductIndex];
+                print("✅ Found matching product: ${matchingProduct['name_1']}");
+
+                final productDetail =
+                    PosStockItemModel.fromJson(matchingProduct);
+                emit(HomeState.success(posStockDetail: productDetail));
+                return productDetail;
+              } else {
+                // Product code not found in the list
+                print("⚠️ No product found with code: $code");
+                emit(HomeState.failure("❌ Product with code $code not found"));
+                return null;
+              }
+            } else {
+              // Empty list
+              print("⚠️ Product list is empty");
+              emit(HomeState.failure("❌ No products returned from API"));
+              return null;
+            }
+          } else {
+            // No 'list' key in Map response
+            print("⚠️ Response does not contain a 'list' key");
+            emit(HomeState.failure("❌ Invalid API response format"));
+            return null;
+          }
+        } else {
+          // Unknown response type
+          print("⚠️ Unexpected response type: ${response.data.runtimeType}");
+          emit(HomeState.failure("❌ Unexpected API response format"));
+          return null;
+        }
       } else {
-        throw Exception("❌ Product not found");
+        // API request failed
+        print("⚠️ API request failed with status: ${response.statusCode}");
+        emit(HomeState.failure(
+            "❌ API request failed with status: ${response.statusCode}"));
+        return null;
       }
     } catch (e) {
-      throw Exception("❌ Error fetching product by code: $e");
+      return null;
     }
   }
 

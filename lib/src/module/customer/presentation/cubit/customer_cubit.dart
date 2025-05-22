@@ -11,14 +11,14 @@ part 'customer_cubit.freezed.dart';
 class CustomerCubit extends Cubit<CustomerState> {
   CustomerCubit() : super(CustomerState.initial());
   Future<void> fetchCustomers() async {
-    emit(CustomerState.loading()); 
+    emit(CustomerState.loading());
     try {
       final response = await Dio().get(ApiPath.posCustomer);
       final List<dynamic> dataList = response.data['list'];
       final customers = dataList.map((e) => CustomerModel.fromJson(e)).toList();
       emit(CustomerState.success(customer: customers));
     } catch (e) {
-      emit(CustomerState.failure(e.toString())); 
+      // emit(CustomerState.failure(e.toString()));
       print("❌ Error: $e");
     }
   }

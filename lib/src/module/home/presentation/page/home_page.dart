@@ -1,5 +1,6 @@
 import 'package:app_flutter_starter_for_job/src/core/router/router.dart';
 import 'package:app_flutter_starter_for_job/src/core/service/cart/cart_service.dart';
+import 'package:app_flutter_starter_for_job/src/core/widgets/grid_loader_skeleton.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/carousel_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             return state.when(
               initial: () => const Center(child: Text('Ready')),
-              loading: () => _buildLoadingSkeleton(),
+              loading: () => GridLoaderSkeleton(),
               failure: (msg) => Center(child: Text('❌ $msg')),
               success: (products, currentPage, _, hasMorePages) {
                 return RefreshIndicator(
@@ -96,68 +97,6 @@ class _HomePageState extends State<HomePage> {
               },
             );
           },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingSkeleton() {
-    return Skeletonizer(
-      enabled: true,
-      child: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Skeleton.leaf(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                Skeleton.leaf(
-                  child: Container(
-                    height: 180,
-                    margin: const EdgeInsets.only(bottom: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                ),
-                Skeletonizer(
-                  enabled: true,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 6,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ),
-                    itemBuilder: (context, index) {
-                      return const ProductWidget(
-                        image: '',
-                        title: '',
-                        price: '',
-                        desc: 0,
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );
@@ -197,7 +136,14 @@ class _HomePageState extends State<HomePage> {
                   final item = products[index];
                   return InkWell(
                     onTap: () {
-                      context.router.push(DetailProductRoute(code: item.code));
+                      context.router.push(DetailProductRoute(
+                          code: item.code,
+                          averageCost: item.average_cost,
+                          balanceQty: item.balance_qty,
+                          name1: item.name_1,
+                          salePrice1: item.sale_price1,
+                          unitCode: item.unit_code,
+                          urlImage: item.url_image));
                     },
                     child: ProductWidget(
                       image: item.url_image,

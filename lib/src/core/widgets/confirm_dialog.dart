@@ -3,7 +3,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 
 Future<void> showCustomOkCancelDialog({
   required BuildContext context,
-  required String title,
+  String title = '',
   required String message,
   String okLabel = 'OK',
   String cancelLabel = 'Cancel',

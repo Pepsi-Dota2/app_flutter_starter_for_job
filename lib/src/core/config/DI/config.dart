@@ -1,6 +1,7 @@
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.config.dart';
 import 'package:app_flutter_starter_for_job/src/core/config/observe.dart';
 import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/customer_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/history/presentation/cubit/history_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
@@ -17,5 +18,6 @@ Future<GetIt> configureDependencies() async {
   getIt.registerFactory<LoginCubit>(() => LoginCubit());
   getIt.registerFactory<DashboardCubit>(() => DashboardCubit());
   getIt.registerFactory<CustomerCubit>(() => CustomerCubit());
+  getIt.registerFactory<HistoryCubit>(() => HistoryCubit(getIt()));
   return getIt.init();
 }

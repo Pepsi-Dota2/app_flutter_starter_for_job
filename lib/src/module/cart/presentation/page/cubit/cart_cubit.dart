@@ -17,8 +17,11 @@ class CartCubit extends Cubit<CartState> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final List<String>? raw = prefs.getStringList(_cartKey);
-      final items = raw?.map((e) => PosStockItemModel.fromJson(json.decode(e))).toList() ?? [];
-      emit(CartState.loaded(items));
+      final items = raw
+              ?.map((e) => PosStockItemModel.fromJson(json.decode(e)))
+              .toList() ??
+          [];
+      emit(CartState.success(items: items));
     } catch (e) {
       emit(CartState.error("Failed to load cart: $e"));
     }
@@ -30,7 +33,7 @@ class CartCubit extends Cubit<CartState> {
     existing.removeWhere((e) => e.code == item.code);
     final encoded = existing.map((e) => json.encode(e.toJson())).toList();
     await prefs.setStringList(_cartKey, encoded);
-    emit(CartState.loaded(existing));
+    emit(CartState.success(items: existing));
   }
 
   Future<List<PosStockItemModel>> getCartItems() async {
@@ -42,9 +45,24 @@ class CartCubit extends Cubit<CartState> {
         [];
   }
 
+  Future<void> updateQty(PosStockItemModel item, int newQty) async {
+    final prefs = await SharedPreferences.getInstance();
+    final existing = await getCartItems();
+
+    final index = existing.indexWhere((e) => e.code == item.code);
+    if (index != -1) {
+      final updatedItem = existing[index].copyWith(balance_qty: newQty);
+      existing[index] = updatedItem;
+
+      final encoded = existing.map((e) => json.encode(e.toJson())).toList();
+      await prefs.setStringList(_cartKey, encoded);
+      emit(CartState.success(items: existing));
+    }
+  }
+
   Future<void> clearCart() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_cartKey);
-    emit(const CartState.loaded([]));
+    emit(const CartState.success());
   }
 }

@@ -11,4 +11,5 @@ enum BottomItem{
   location,
   // cart,
   profile,
+  history,
 }

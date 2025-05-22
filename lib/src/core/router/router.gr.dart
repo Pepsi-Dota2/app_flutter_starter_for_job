@@ -33,7 +33,19 @@ abstract class _$AppRouter extends RootStackRouter {
         child: DetailProductPage(
           key: args.key,
           code: args.code,
+          averageCost: args.averageCost,
+          balanceQty: args.balanceQty,
+          name1: args.name1,
+          salePrice1: args.salePrice1,
+          unitCode: args.unitCode,
+          urlImage: args.urlImage,
         ),
+      );
+    },
+    HistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HistoryPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -52,12 +64,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: WrappedRoute(child: LoginPage(key: args.key)),
-      );
-    },
-    NotificationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const NotificationPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -119,12 +125,24 @@ class DetailProductRoute extends PageRouteInfo<DetailProductRouteArgs> {
   DetailProductRoute({
     Key? key,
     required String code,
+    String? averageCost,
+    int? balanceQty,
+    String? name1,
+    String? salePrice1,
+    String? unitCode,
+    String? urlImage,
     List<PageRouteInfo>? children,
   }) : super(
           DetailProductRoute.name,
           args: DetailProductRouteArgs(
             key: key,
             code: code,
+            averageCost: averageCost,
+            balanceQty: balanceQty,
+            name1: name1,
+            salePrice1: salePrice1,
+            unitCode: unitCode,
+            urlImage: urlImage,
           ),
           initialChildren: children,
         );
@@ -139,16 +157,48 @@ class DetailProductRouteArgs {
   const DetailProductRouteArgs({
     this.key,
     required this.code,
+    this.averageCost,
+    this.balanceQty,
+    this.name1,
+    this.salePrice1,
+    this.unitCode,
+    this.urlImage,
   });
 
   final Key? key;
 
   final String code;
 
+  final String? averageCost;
+
+  final int? balanceQty;
+
+  final String? name1;
+
+  final String? salePrice1;
+
+  final String? unitCode;
+
+  final String? urlImage;
+
   @override
   String toString() {
-    return 'DetailProductRouteArgs{key: $key, code: $code}';
+    return 'DetailProductRouteArgs{key: $key, code: $code, averageCost: $averageCost, balanceQty: $balanceQty, name1: $name1, salePrice1: $salePrice1, unitCode: $unitCode, urlImage: $urlImage}';
   }
+}
+
+/// generated route for
+/// [HistoryPage]
+class HistoryRoute extends PageRouteInfo<void> {
+  const HistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          HistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -214,20 +264,6 @@ class LoginRouteArgs {
   String toString() {
     return 'LoginRouteArgs{key: $key}';
   }
-}
-
-/// generated route for
-/// [NotificationPage]
-class NotificationRoute extends PageRouteInfo<void> {
-  const NotificationRoute({List<PageRouteInfo>? children})
-      : super(
-          NotificationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'NotificationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

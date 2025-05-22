@@ -20,7 +20,8 @@ mixin _$CartState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items) loaded,
+    required TResult Function(List<PosStockItemModel> items, int quantity)
+        success,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ mixin _$CartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items)? loaded,
+    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ mixin _$CartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items)? loaded,
+    TResult Function(List<PosStockItemModel> items, int quantity)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -45,7 +46,7 @@ mixin _$CartState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +54,7 @@ mixin _$CartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ mixin _$CartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -131,7 +132,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items) loaded,
+    required TResult Function(List<PosStockItemModel> items, int quantity)
+        success,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -142,7 +144,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items)? loaded,
+    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -153,7 +155,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items)? loaded,
+    TResult Function(List<PosStockItemModel> items, int quantity)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -168,7 +170,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -179,7 +181,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -190,7 +192,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -248,7 +250,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items) loaded,
+    required TResult Function(List<PosStockItemModel> items, int quantity)
+        success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -259,7 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items)? loaded,
+    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -270,7 +273,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items)? loaded,
+    TResult Function(List<PosStockItemModel> items, int quantity)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -285,7 +288,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -296,7 +299,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -307,7 +310,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -323,20 +326,20 @@ abstract class _Loading implements CartState {
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PosStockItemModel> items});
+  $Res call({List<PosStockItemModel> items, int quantity});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CartState
@@ -345,23 +348,31 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? items = null,
+    Object? quantity = null,
   }) {
-    return _then(_$LoadedImpl(
-      null == items
+    return _then(_$SuccessImpl(
+      items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<PosStockItemModel>,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<PosStockItemModel> items) : _items = items;
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl(
+      {final List<PosStockItemModel> items = const [], this.quantity = 1})
+      : _items = items;
 
   final List<PosStockItemModel> _items;
   @override
+  @JsonKey()
   List<PosStockItemModel> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
@@ -369,39 +380,46 @@ class _$LoadedImpl implements _Loaded {
   }
 
   @override
+  @JsonKey()
+  final int quantity;
+
+  @override
   String toString() {
-    return 'CartState.loaded(items: $items)';
+    return 'CartState.success(items: $items, quantity: $quantity)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            other is _$SuccessImpl &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_items), quantity);
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items) loaded,
+    required TResult Function(List<PosStockItemModel> items, int quantity)
+        success,
     required TResult Function(String message) error,
   }) {
-    return loaded(items);
+    return success(items, quantity);
   }
 
   @override
@@ -409,10 +427,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items)? loaded,
+    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(items);
+    return success?.call(items, quantity);
   }
 
   @override
@@ -420,12 +438,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items)? loaded,
+    TResult Function(List<PosStockItemModel> items, int quantity)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(items);
+    if (success != null) {
+      return success(items, quantity);
     }
     return orElse();
   }
@@ -435,10 +453,10 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
-    return loaded(this);
+    return success(this);
   }
 
   @override
@@ -446,10 +464,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
-    return loaded?.call(this);
+    return success?.call(this);
   }
 
   @override
@@ -457,26 +475,29 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loaded implements CartState {
-  const factory _Loaded(final List<PosStockItemModel> items) = _$LoadedImpl;
+abstract class _Success implements CartState {
+  const factory _Success(
+      {final List<PosStockItemModel> items,
+      final int quantity}) = _$SuccessImpl;
 
   List<PosStockItemModel> get items;
+  int get quantity;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -550,7 +571,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items) loaded,
+    required TResult Function(List<PosStockItemModel> items, int quantity)
+        success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -561,7 +583,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items)? loaded,
+    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -572,7 +594,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items)? loaded,
+    TResult Function(List<PosStockItemModel> items, int quantity)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -587,7 +609,7 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -598,7 +620,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -609,7 +631,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

@@ -3,6 +3,7 @@ import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
 import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/customer_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/history/presentation/page/history.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/dashboard/dashboard_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
@@ -37,14 +38,13 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
   }
 
   @override
-
   Widget build(BuildContext context) {
     final cubit = context.read<DashboardCubit>();
     final PageController pageController = PageController();
     return Scaffold(
       body: PageView(
         controller: pageController,
-         physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
           final navbarItem = BottomItem.values[index];
           cubit.getNavBarItem(navbarItem);
@@ -52,19 +52,25 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
         children: [
           HomePage(userInfo: userInfo),
           const CartPage(),
-          const ProfilePage()
+          const ProfilePage(),
+          const HistoryPage()
         ],
       ),
       bottomNavigationBar: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           return AnimatedBottomNavigationBar(
-            icons: const [Icons.home, Icons.shopping_cart, Icons.person],
+            icons: const [
+              Icons.home,
+              Icons.shopping_cart,
+              Icons.person,
+              Icons.history
+            ],
+            notchSmoothness: NotchSmoothness.defaultEdge,
             activeIndex: state.index,
-            gapLocation: GapLocation.end,
-            notchSmoothness: NotchSmoothness.softEdge,
+            gapLocation: GapLocation.none,
             leftCornerRadius: 0,
             rightCornerRadius: 0,
-            activeColor: AppColors.tealGreen,
+            activeColor: AppColors.electricPurple,
             inactiveColor: AppColors.grey,
             onTap: (index) {
               final navbarItem = BottomItem.values[index];

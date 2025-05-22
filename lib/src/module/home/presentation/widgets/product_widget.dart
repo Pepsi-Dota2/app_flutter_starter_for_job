@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/core/utils/convert_currency.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
@@ -88,9 +89,9 @@ class ProductWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          '\$${price}',
+                          '${formatBaht(price)}',
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: Colors.green,
                           ),
@@ -99,6 +100,7 @@ class ProductWidget extends StatelessWidget {
                           onTap: onClick,
                           child: Container(
                             child: Icon(
+                              size: 20,
                               Icons.shopping_cart,
                               color: Colors.green.shade500,
                             ),

@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/module/history/presentation/page/history.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/dash_board.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
@@ -5,7 +6,6 @@ import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/ho
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/search/search_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cart.dart';
 import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/login_page.dart';
-import 'package:app_flutter_starter_for_job/src/module/login/presentation/page/notification.dart';
 import 'package:app_flutter_starter_for_job/src/module/customer/presentation/page/customer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

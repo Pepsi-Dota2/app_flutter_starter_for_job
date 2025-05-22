@@ -7,7 +7,7 @@ part 'dashboard_cubit.freezed.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit() : super(DashboardState());
-   void getNavBarItem(BottomItem item) {
+  void getNavBarItem(BottomItem item) {
     int newIndex;
     switch (item) {
       case BottomItem.home:
@@ -16,11 +16,15 @@ class DashboardCubit extends Cubit<DashboardState> {
       case BottomItem.location:
         newIndex = 1;
         break;
-        case BottomItem.profile:
+      case BottomItem.profile:
         newIndex = 2;
         break;
+      case BottomItem.history:
+        newIndex = 3;
+        break;
     }
-    emit(state.copyWith(navbarItem: item, index: newIndex));
+    if (!isClosed) {
+      emit(state.copyWith(navbarItem: item, index: newIndex));
+    }
   }
-
 }

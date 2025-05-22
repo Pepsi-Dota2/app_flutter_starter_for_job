@@ -8,7 +8,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 @RoutePage()
 class DetailProductPage extends StatelessWidget {
   final String code;
-  const DetailProductPage({super.key, required this.code});
+  final String? averageCost;
+  final int? balanceQty;
+  final String? name1;
+  final String? salePrice1;
+  final String? unitCode;
+  final String? urlImage;
+  const DetailProductPage({
+    super.key,
+    required this.code,
+    this.averageCost,
+    this.balanceQty,
+    this.name1,
+    this.salePrice1,
+    this.unitCode,
+    this.urlImage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +39,23 @@ class DetailProductPage extends StatelessWidget {
               failure: (msg) => Center(child: Text('❌ $msg')),
               error: (msg) => Center(child: Text('❌ $msg')),
               success: (products, productDetail, currentPage, hasMorePages) {
-                return SingleChildScrollView(
-                  child: ProductCardDetail(
-                    desc: productDetail!.name_1,
-                    title: productDetail.code,
-                    location: "Warehouse",
-                    imageUrl: productDetail.url_image,
-                    price: double.tryParse(productDetail.sale_price1) ?? 0.0,
-                    followerCount: "0",
-                    itemCount: productDetail.balance_qty.toString(),
-                    onBuyNow: () {},
-                  ),
-                );
+                if (productDetail != null) {
+                  return SingleChildScrollView(
+                    child: ProductCardDetail(
+                      desc: productDetail.name_1,
+                      title: productDetail.code,
+                      location: "Warehouse",
+                      imageUrl: productDetail.url_image,
+                      price: double.tryParse(productDetail.sale_price1) ?? 0.0,
+                      followerCount: "0",
+                      itemCount: productDetail.balance_qty.toString(),
+                      onBuyNow: () {},
+                    ),
+                  );
+                } else {
+                  return const Center(
+                      child: Text('No product detail available'));
+                }
               },
               loadMore: (_, __, ___) =>
                   const Center(child: CircularProgressIndicator()),
