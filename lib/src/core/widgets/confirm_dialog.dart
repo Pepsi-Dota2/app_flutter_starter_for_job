@@ -24,3 +24,14 @@ Future<void> showCustomOkCancelDialog({
     onResult(result);
   }
 }
+
+Future<void> showOutOfStockDialog(BuildContext context,
+    {String? title, String? message}) {
+  return showOkAlertDialog(
+    style: AdaptiveStyle.iOS,
+    context: context,
+    title: title ?? 'ສິນຄ້າໝົດສະຕ໋ອກ',
+    message: message ?? 'ສິນຄ້ານີ້ບໍ່ພຽງພໍສໍາລັບການເພີ່ມຈໍານວນ.',
+    okLabel: 'ຕົກລົງ',
+  );
+}

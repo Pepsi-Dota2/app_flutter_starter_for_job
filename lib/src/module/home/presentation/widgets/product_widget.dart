@@ -99,8 +99,10 @@ class ProductWidget extends StatelessWidget {
                         InkWell(
                           onTap: onClick,
                           child: Container(
+                            width: size.width * 0.09,
+                            height: size.height * 0.09,
                             child: Icon(
-                              size: 20,
+                              size: 24,
                               Icons.shopping_cart,
                               color: Colors.green.shade500,
                             ),

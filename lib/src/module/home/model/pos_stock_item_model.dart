@@ -8,6 +8,7 @@ class PosStockItemModel with _$PosStockItemModel {
   const factory PosStockItemModel({
     @Default("") String average_cost,
     @Default(0) int balance_qty,
+    @Default(0) int qty,
     @Default("") String name_1,
     @Default("") String code,
     @Default("") String unit_code,

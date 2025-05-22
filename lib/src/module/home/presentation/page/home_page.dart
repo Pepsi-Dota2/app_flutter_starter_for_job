@@ -134,7 +134,8 @@ class _HomePageState extends State<HomePage> {
                 itemCount: products.length,
                 itemBuilder: (BuildContext context, int index) {
                   final item = products[index];
-                  return InkWell(
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
                     onTap: () {
                       context.router.push(DetailProductRoute(
                           code: item.code,
@@ -152,11 +153,7 @@ class _HomePageState extends State<HomePage> {
                       desc: item.balance_qty,
                       onClick: () async {
                         final cartService = CartService();
-                        await cartService.addToCart(item);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content: Text('✅ Added to cart: ${item.name_1}')),
-                        );
+                        await cartService.addToCart(context, item);
                       },
                     ),
                   );
