@@ -5,6 +5,7 @@ import 'package:app_flutter_starter_for_job/src/module/home/model/carousel_model
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/carousel.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_widget.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/search_bar.dart';
@@ -136,16 +137,11 @@ class _HomePageState extends State<HomePage> {
                   final item = products[index];
                   return GestureDetector(
                     behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      context.router.push(DetailProductRoute(
-                          code: item.code,
-                          averageCost: item.average_cost,
-                          balanceQty: item.balance_qty,
-                          name1: item.name_1,
-                          salePrice1: item.sale_price1,
-                          unitCode: item.unit_code,
-                          urlImage: item.url_image));
-                    },
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) =>
+                                ProductDetailPage(product: products[index]))),
                     child: ProductWidget(
                       image: item.url_image,
                       title: item.name_1,

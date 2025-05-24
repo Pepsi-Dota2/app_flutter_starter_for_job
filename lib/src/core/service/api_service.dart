@@ -1,6 +1,7 @@
 import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
 import 'package:app_flutter_starter_for_job/src/core/model/auth_model.dart';
 import 'package:app_flutter_starter_for_job/src/core/model/pos_stock_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/cart/model/check_bill_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/history/model/history_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:dio/dio.dart';
@@ -23,4 +24,5 @@ abstract class AppApi {
 
   @GET(ApiPath.getHistory)
   Future<HistoryModel> getHistory();
+
 }

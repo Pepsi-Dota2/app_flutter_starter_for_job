@@ -20,25 +20,51 @@ mixin _$CartState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items, int quantity)
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
         success,
     required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +74,7 @@ mixin _$CartState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +83,7 @@ mixin _$CartState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +92,7 @@ mixin _$CartState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,9 +161,17 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items, int quantity)
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
         success,
     required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
   }) {
     return initial();
   }
@@ -144,8 +181,17 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
   }) {
     return initial?.call();
   }
@@ -155,8 +201,17 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -172,6 +227,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
   }) {
     return initial(this);
   }
@@ -183,6 +239,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
   }) {
     return initial?.call(this);
   }
@@ -194,6 +251,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -250,9 +308,17 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items, int quantity)
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
         success,
     required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
   }) {
     return loading();
   }
@@ -262,8 +328,17 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
   }) {
     return loading?.call();
   }
@@ -273,8 +348,17 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -290,6 +374,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
   }) {
     return loading(this);
   }
@@ -301,6 +386,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
   }) {
     return loading?.call(this);
   }
@@ -312,6 +398,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -331,7 +418,18 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PosStockItemModel> items, int quantity});
+  $Res call(
+      {List<PosStockItemModel> items,
+      int quantity,
+      CheckBillModel? checkBill,
+      String? docno,
+      List<CustomerModel> customer,
+      CodeModel? userInfo,
+      CustomerModel? selectedCustomer});
+
+  $CheckBillModelCopyWith<$Res>? get checkBill;
+  $CodeModelCopyWith<$Res>? get userInfo;
+  $CustomerModelCopyWith<$Res>? get selectedCustomer;
 }
 
 /// @nodoc
@@ -349,6 +447,11 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
     Object? quantity = null,
+    Object? checkBill = freezed,
+    Object? docno = freezed,
+    Object? customer = null,
+    Object? userInfo = freezed,
+    Object? selectedCustomer = freezed,
   }) {
     return _then(_$SuccessImpl(
       items: null == items
@@ -359,7 +462,69 @@ class __$$SuccessImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      checkBill: freezed == checkBill
+          ? _value.checkBill
+          : checkBill // ignore: cast_nullable_to_non_nullable
+              as CheckBillModel?,
+      docno: freezed == docno
+          ? _value.docno
+          : docno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customer: null == customer
+          ? _value._customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as List<CustomerModel>,
+      userInfo: freezed == userInfo
+          ? _value.userInfo
+          : userInfo // ignore: cast_nullable_to_non_nullable
+              as CodeModel?,
+      selectedCustomer: freezed == selectedCustomer
+          ? _value.selectedCustomer
+          : selectedCustomer // ignore: cast_nullable_to_non_nullable
+              as CustomerModel?,
     ));
+  }
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CheckBillModelCopyWith<$Res>? get checkBill {
+    if (_value.checkBill == null) {
+      return null;
+    }
+
+    return $CheckBillModelCopyWith<$Res>(_value.checkBill!, (value) {
+      return _then(_value.copyWith(checkBill: value));
+    });
+  }
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CodeModelCopyWith<$Res>? get userInfo {
+    if (_value.userInfo == null) {
+      return null;
+    }
+
+    return $CodeModelCopyWith<$Res>(_value.userInfo!, (value) {
+      return _then(_value.copyWith(userInfo: value));
+    });
+  }
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerModelCopyWith<$Res>? get selectedCustomer {
+    if (_value.selectedCustomer == null) {
+      return null;
+    }
+
+    return $CustomerModelCopyWith<$Res>(_value.selectedCustomer!, (value) {
+      return _then(_value.copyWith(selectedCustomer: value));
+    });
   }
 }
 
@@ -367,8 +532,15 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 class _$SuccessImpl implements _Success {
   const _$SuccessImpl(
-      {final List<PosStockItemModel> items = const [], this.quantity = 1})
-      : _items = items;
+      {final List<PosStockItemModel> items = const [],
+      this.quantity = 1,
+      this.checkBill,
+      this.docno,
+      final List<CustomerModel> customer = const [],
+      this.userInfo,
+      this.selectedCustomer})
+      : _items = items,
+        _customer = customer;
 
   final List<PosStockItemModel> _items;
   @override
@@ -382,10 +554,27 @@ class _$SuccessImpl implements _Success {
   @override
   @JsonKey()
   final int quantity;
+  @override
+  final CheckBillModel? checkBill;
+  @override
+  final String? docno;
+  final List<CustomerModel> _customer;
+  @override
+  @JsonKey()
+  List<CustomerModel> get customer {
+    if (_customer is EqualUnmodifiableListView) return _customer;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_customer);
+  }
+
+  @override
+  final CodeModel? userInfo;
+  @override
+  final CustomerModel? selectedCustomer;
 
   @override
   String toString() {
-    return 'CartState.success(items: $items, quantity: $quantity)';
+    return 'CartState.success(items: $items, quantity: $quantity, checkBill: $checkBill, docno: $docno, customer: $customer, userInfo: $userInfo, selectedCustomer: $selectedCustomer)';
   }
 
   @override
@@ -395,12 +584,27 @@ class _$SuccessImpl implements _Success {
             other is _$SuccessImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
+                other.quantity == quantity) &&
+            (identical(other.checkBill, checkBill) ||
+                other.checkBill == checkBill) &&
+            (identical(other.docno, docno) || other.docno == docno) &&
+            const DeepCollectionEquality().equals(other._customer, _customer) &&
+            (identical(other.userInfo, userInfo) ||
+                other.userInfo == userInfo) &&
+            (identical(other.selectedCustomer, selectedCustomer) ||
+                other.selectedCustomer == selectedCustomer));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_items), quantity);
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      quantity,
+      checkBill,
+      docno,
+      const DeepCollectionEquality().hash(_customer),
+      userInfo,
+      selectedCustomer);
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -415,11 +619,20 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items, int quantity)
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
         success,
     required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
   }) {
-    return success(items, quantity);
+    return success(items, quantity, checkBill, docno, customer, userInfo,
+        selectedCustomer);
   }
 
   @override
@@ -427,10 +640,20 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
   }) {
-    return success?.call(items, quantity);
+    return success?.call(items, quantity, checkBill, docno, customer, userInfo,
+        selectedCustomer);
   }
 
   @override
@@ -438,12 +661,22 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(items, quantity);
+      return success(items, quantity, checkBill, docno, customer, userInfo,
+          selectedCustomer);
     }
     return orElse();
   }
@@ -455,6 +688,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
   }) {
     return success(this);
   }
@@ -466,6 +700,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
   }) {
     return success?.call(this);
   }
@@ -477,6 +712,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -489,10 +725,20 @@ class _$SuccessImpl implements _Success {
 abstract class _Success implements CartState {
   const factory _Success(
       {final List<PosStockItemModel> items,
-      final int quantity}) = _$SuccessImpl;
+      final int quantity,
+      final CheckBillModel? checkBill,
+      final String? docno,
+      final List<CustomerModel> customer,
+      final CodeModel? userInfo,
+      final CustomerModel? selectedCustomer}) = _$SuccessImpl;
 
   List<PosStockItemModel> get items;
   int get quantity;
+  CheckBillModel? get checkBill;
+  String? get docno;
+  List<CustomerModel> get customer;
+  CodeModel? get userInfo;
+  CustomerModel? get selectedCustomer;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -571,9 +817,17 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PosStockItemModel> items, int quantity)
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
         success,
     required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
   }) {
     return error(message);
   }
@@ -583,8 +837,17 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
   }) {
     return error?.call(message);
   }
@@ -594,8 +857,17 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PosStockItemModel> items, int quantity)? success,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
     TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -611,6 +883,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
   }) {
     return error(this);
   }
@@ -622,6 +895,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
   }) {
     return error?.call(this);
   }
@@ -633,6 +907,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -651,5 +926,187 @@ abstract class _Error implements CartState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$QrReadyImplCopyWith<$Res> {
+  factory _$$QrReadyImplCopyWith(
+          _$QrReadyImpl value, $Res Function(_$QrReadyImpl) then) =
+      __$$QrReadyImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String html});
+}
+
+/// @nodoc
+class __$$QrReadyImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$QrReadyImpl>
+    implements _$$QrReadyImplCopyWith<$Res> {
+  __$$QrReadyImplCopyWithImpl(
+      _$QrReadyImpl _value, $Res Function(_$QrReadyImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? html = null,
+  }) {
+    return _then(_$QrReadyImpl(
+      html: null == html
+          ? _value.html
+          : html // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$QrReadyImpl implements _QrReady {
+  const _$QrReadyImpl({required this.html});
+
+  @override
+  final String html;
+
+  @override
+  String toString() {
+    return 'CartState.qrReady(html: $html)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QrReadyImpl &&
+            (identical(other.html, html) || other.html == html));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, html);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QrReadyImplCopyWith<_$QrReadyImpl> get copyWith =>
+      __$$QrReadyImplCopyWithImpl<_$QrReadyImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)
+        success,
+    required TResult Function(String message) error,
+    required TResult Function(String html) qrReady,
+  }) {
+    return qrReady(html);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
+    TResult? Function(String message)? error,
+    TResult? Function(String html)? qrReady,
+  }) {
+    return qrReady?.call(html);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<PosStockItemModel> items,
+            int quantity,
+            CheckBillModel? checkBill,
+            String? docno,
+            List<CustomerModel> customer,
+            CodeModel? userInfo,
+            CustomerModel? selectedCustomer)?
+        success,
+    TResult Function(String message)? error,
+    TResult Function(String html)? qrReady,
+    required TResult orElse(),
+  }) {
+    if (qrReady != null) {
+      return qrReady(html);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_QrReady value) qrReady,
+  }) {
+    return qrReady(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_QrReady value)? qrReady,
+  }) {
+    return qrReady?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_QrReady value)? qrReady,
+    required TResult orElse(),
+  }) {
+    if (qrReady != null) {
+      return qrReady(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _QrReady implements CartState {
+  const factory _QrReady({required final String html}) = _$QrReadyImpl;
+
+  String get html;
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$QrReadyImplCopyWith<_$QrReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

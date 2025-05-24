@@ -1,5 +1,6 @@
 import 'package:app_flutter_starter_for_job/src/core/service/api_service.dart';
 import 'package:app_flutter_starter_for_job/src/module/history/model/history_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -1,67 +1,132 @@
-import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/presentation/cubit/home_cubit.dart';
-import 'package:app_flutter_starter_for_job/src/module/home/presentation/widgets/product_detail.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:app_flutter_starter_for_job/src/core/utils/convert_money.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage()
-class DetailProductPage extends StatelessWidget {
-  final String code;
-  final String? averageCost;
-  final int? balanceQty;
-  final String? name1;
-  final String? salePrice1;
-  final String? unitCode;
-  final String? urlImage;
-  const DetailProductPage({
-    super.key,
-    required this.code,
-    this.averageCost,
-    this.balanceQty,
-    this.name1,
-    this.salePrice1,
-    this.unitCode,
-    this.urlImage,
-  });
+class ProductDetailPage extends StatelessWidget {
+  final PosStockItemModel product;
+
+  const ProductDetailPage({required this.product, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<HomeCubit>()..getProductDetailByCode(code),
-      child: Scaffold(
-        appBar: AppBar(title: const Text("Product Detail")),
-        body: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const Center(child: Text('Ready')),
-              loading: () => const Center(child: CircularProgressIndicator()),
-              failure: (msg) => Center(child: Text('❌ $msg')),
-              error: (msg) => Center(child: Text('❌ $msg')),
-              success: (products, productDetail, currentPage, hasMorePages) {
-                if (productDetail != null) {
-                  return SingleChildScrollView(
-                    child: ProductCardDetail(
-                      desc: productDetail.name_1,
-                      title: productDetail.code,
-                      location: "Warehouse",
-                      imageUrl: productDetail.url_image,
-                      price: double.tryParse(productDetail.sale_price1) ?? 0.0,
-                      followerCount: "0",
-                      itemCount: productDetail.balance_qty.toString(),
-                      onBuyNow: () {},
-                    ),
-                  );
-                } else {
-                  return const Center(
-                      child: Text('No product detail available'));
-                }
-              },
-              loadMore: (_, __, ___) =>
-                  const Center(child: CircularProgressIndicator()),
-            );
-          },
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Product Detail",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+        backgroundColor: Colors.purple.shade600,
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.grey[50],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 300,
+            pinned: true,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.asset(
+                "assets/images/44803.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(18),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          color: Colors.blue.shade600,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Text(
+                        "Code :${product.code}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      product.name_1,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      width: size.width * 0.4,
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.blue[600]!, Colors.blue[700]!],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Price : ',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ' ${formatBaht(product.sale_price1)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    Row(
+                      children: [
+                        Text("Unit", style: TextStyle(color: Colors.grey[600])),
+                        const Spacer(),
+                        Text(product.unit_code,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.w600)),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      children: [
+                        Text("Stock",
+                            style: TextStyle(color: Colors.grey[600])),
+                        const Spacer(),
+                        Text("${product.balance_qty}",
+                            style:
+                                const TextStyle(fontWeight: FontWeight.w600)),
+                      ],
+                    ),
+                    const Divider(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

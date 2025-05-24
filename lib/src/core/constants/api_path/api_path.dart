@@ -4,4 +4,5 @@ class ApiPath {
   static const String posStock = "${baseUrl}/pos/stock";
   static const String posCustomer = "${baseUrl}/pos/customer";
   static const String getHistory = "${baseUrl}/pos/docno";
+  static const String saveBill = "${baseUrl}/pos/saveBill";
 }

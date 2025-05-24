@@ -1,5 +1,6 @@
 import 'package:app_flutter_starter_for_job/src/module/history/presentation/page/history.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
+import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/dash_board.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/detail_page.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/presentation/page/home_page.dart';
@@ -20,6 +21,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: DashBoardRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: SearchRoute.page),
-        AutoRoute(page: DetailProductRoute.page),
+        // AutoRoute(page: DetailProductRoute.page),
       ];
 }

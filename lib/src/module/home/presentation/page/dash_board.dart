@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:app_flutter_starter_for_job/src/core/config/DI/config.dart';
 import 'package:app_flutter_starter_for_job/src/core/constants/colors/app_color.dart';
 import 'package:app_flutter_starter_for_job/src/core/enum/enum.dart';
+import 'package:app_flutter_starter_for_job/src/module/cart/presentation/page/cubit/cart_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/customer/presentation/cubit/customer_cubit.dart';
 import 'package:app_flutter_starter_for_job/src/module/history/presentation/page/history.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
@@ -51,7 +52,7 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
         },
         children: [
           HomePage(userInfo: userInfo),
-          const CartPage(),
+          CartPage(userInfo: userInfo,),
           const ProfilePage(),
           const HistoryPage()
         ],

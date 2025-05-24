@@ -26,22 +26,6 @@ abstract class _$AppRouter extends RootStackRouter {
         )),
       );
     },
-    DetailProductRoute.name: (routeData) {
-      final args = routeData.argsAs<DetailProductRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: DetailProductPage(
-          key: args.key,
-          code: args.code,
-          averageCost: args.averageCost,
-          balanceQty: args.balanceQty,
-          name1: args.name1,
-          salePrice1: args.salePrice1,
-          unitCode: args.unitCode,
-          urlImage: args.urlImage,
-        ),
-      );
-    },
     HistoryRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -116,74 +100,6 @@ class DashBoardRouteArgs {
   @override
   String toString() {
     return 'DashBoardRouteArgs{key: $key, userInfo: $userInfo}';
-  }
-}
-
-/// generated route for
-/// [DetailProductPage]
-class DetailProductRoute extends PageRouteInfo<DetailProductRouteArgs> {
-  DetailProductRoute({
-    Key? key,
-    required String code,
-    String? averageCost,
-    int? balanceQty,
-    String? name1,
-    String? salePrice1,
-    String? unitCode,
-    String? urlImage,
-    List<PageRouteInfo>? children,
-  }) : super(
-          DetailProductRoute.name,
-          args: DetailProductRouteArgs(
-            key: key,
-            code: code,
-            averageCost: averageCost,
-            balanceQty: balanceQty,
-            name1: name1,
-            salePrice1: salePrice1,
-            unitCode: unitCode,
-            urlImage: urlImage,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'DetailProductRoute';
-
-  static const PageInfo<DetailProductRouteArgs> page =
-      PageInfo<DetailProductRouteArgs>(name);
-}
-
-class DetailProductRouteArgs {
-  const DetailProductRouteArgs({
-    this.key,
-    required this.code,
-    this.averageCost,
-    this.balanceQty,
-    this.name1,
-    this.salePrice1,
-    this.unitCode,
-    this.urlImage,
-  });
-
-  final Key? key;
-
-  final String code;
-
-  final String? averageCost;
-
-  final int? balanceQty;
-
-  final String? name1;
-
-  final String? salePrice1;
-
-  final String? unitCode;
-
-  final String? urlImage;
-
-  @override
-  String toString() {
-    return 'DetailProductRouteArgs{key: $key, code: $code, averageCost: $averageCost, balanceQty: $balanceQty, name1: $name1, salePrice1: $salePrice1, unitCode: $unitCode, urlImage: $urlImage}';
   }
 }
 

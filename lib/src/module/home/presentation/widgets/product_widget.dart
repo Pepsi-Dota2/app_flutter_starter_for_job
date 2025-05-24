@@ -1,4 +1,4 @@
-import 'package:app_flutter_starter_for_job/src/core/utils/convert_currency.dart';
+import 'package:app_flutter_starter_for_job/src/core/utils/convert_money.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {

@@ -11,7 +11,7 @@ class CodeModel with _$CodeModel {
     @Default("") String code,
     @Default("") String cust_group_main,
     @Default(0) int cust_group_sub,
-    @Default("") String departmen,
+    @Default("") String department,
     @Default("") String ic_shelf,
     @Default("") String ic_wht,
     @Default("") String logistic_code,
