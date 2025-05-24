@@ -15,12 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CartRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CartPage(),
-      );
-    },
     DashBoardRoute.name: (routeData) {
       final args = routeData.argsAs<DashBoardRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -30,6 +24,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           userInfo: args.userInfo,
         )),
+      );
+    },
+    HistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HistoryPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -50,16 +50,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: LoginPage(key: args.key)),
       );
     },
-    NotificationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const NotificationPage(),
-      );
-    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const ProfilePage()),
+        child: const ProfilePage(),
       );
     },
     SearchRoute.name: (routeData) {
@@ -69,20 +63,6 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
-}
-
-/// generated route for
-/// [CartPage]
-class CartRoute extends PageRouteInfo<void> {
-  const CartRoute({List<PageRouteInfo>? children})
-      : super(
-          CartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CartRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -121,6 +101,20 @@ class DashBoardRouteArgs {
   String toString() {
     return 'DashBoardRouteArgs{key: $key, userInfo: $userInfo}';
   }
+}
+
+/// generated route for
+/// [HistoryPage]
+class HistoryRoute extends PageRouteInfo<void> {
+  const HistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          HistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -186,20 +180,6 @@ class LoginRouteArgs {
   String toString() {
     return 'LoginRouteArgs{key: $key}';
   }
-}
-
-/// generated route for
-/// [NotificationPage]
-class NotificationRoute extends PageRouteInfo<void> {
-  const NotificationRoute({List<PageRouteInfo>? children})
-      : super(
-          NotificationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'NotificationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

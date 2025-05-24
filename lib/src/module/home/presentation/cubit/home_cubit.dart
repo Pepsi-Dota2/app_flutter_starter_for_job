@@ -1,42 +1,42 @@
-import 'dart:convert';
+import 'dart:async';
 import 'package:app_flutter_starter_for_job/src/core/constants/api_path/api_path.dart';
+import 'package:app_flutter_starter_for_job/src/core/model/pos_stock_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/code_model.dart';
 import 'package:app_flutter_starter_for_job/src/module/home/model/pos_stock_item_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'home_state.dart';
 part 'home_cubit.freezed.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
+  HomeCubit(this.dio, this.userInfo)
+      : super(
+          const HomeState.initial(),
+        );
+  final ScrollController scrollController = ScrollController();
   final Dio dio;
-  HomeCubit(this.dio, this.userInfo) : super(const HomeState.initial());
   final CodeModel userInfo;
-  Future<void> getProduct() async {
+  List<PosStockItemModel> items = [];
+  int page = 1;
+  bool isLoading = false;
+  bool hasMore = true;
+  int limit = 10;
+  Timer? debounceTimer;
+  Future<void> onRefresh() async {
+    page = 1;
+    items.clear();
+    await getProduct();
+  }
+
+  Future<PosStockModel> getProduct() async {
     emit(const HomeState.loading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final String? cachedData = prefs.getString('cached_products');
-      final int? cacheTimestamp = prefs.getInt('products_cache_timestamp');
-      final bool isCacheValid = cacheTimestamp != null &&
-          DateTime.now().millisecondsSinceEpoch - cacheTimestamp < 3600000;
-      if (cachedData != null && isCacheValid) {
-        final List<dynamic> dataList = jsonDecode(cachedData);
-        final products =
-            dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
-        emit(HomeState.success(
-          posStock: products,
-          currentPage: 1,
-          hasMorePages: false,
-          totalItems: 10,
-        ));
-        return;
-      }
       final response = await dio.post(
         ApiPath.posStock,
         data: {
@@ -47,33 +47,83 @@ class HomeCubit extends Cubit<HomeState> {
           "group_main": "14",
           "currency_code": "01",
           "page": 1,
-          "limit": 20,
+          "limit": 10,
         },
       );
       if (response.statusCode == 200 && response.data['list'] != null) {
         final List<dynamic> dataList = response.data['list'];
-        final products =
+        final newItems =
             dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
-
-        await prefs.setString('cached_products', jsonEncode(dataList));
-        await prefs.setInt(
-            'products_cache_timestamp', DateTime.now().millisecondsSinceEpoch);
-
-        final int totalItems = response.data['totalItems'] ?? products.length;
-        final int currentPage = response.data['page'] ?? 1;
-        final bool hasMorePages =
-            (response.data['totalPages'] ?? 1) > currentPage;
         emit(HomeState.success(
-          posStock: products,
-          currentPage: currentPage,
-          hasMorePages: hasMorePages,
-          totalItems: totalItems,
+          posStock: newItems,
+          currentPage: page,
+          hasMorePages: hasMore,
         ));
+        return PosStockModel.fromJson(response.data);
       } else {
         emit(const HomeState.failure("Invalid response from server."));
+        throw Exception("Invalid response from server.");
       }
     } catch (e) {
-      emit(HomeState.failure(e.toString()));
+      emit(HomeState.failure("❌ ${e.toString()}"));
+      throw Exception("❌ ${e.toString()}");
+    } finally {
+      isLoading = false;
     }
+  }
+
+  Future<void> loadMoreData() async {
+    try {
+      final nextPage = page + 1;
+      final response = await dio.post(
+        ApiPath.posStock,
+        data: {
+          "wh_code": userInfo.ic_wht,
+          "sh_code": userInfo.ic_shelf,
+          "cust_group_main": userInfo.cust_group_main,
+          "cust_group_sub": userInfo.cust_group_sub.toString(),
+          "group_main": "14",
+          "currency_code": "01",
+          "page": nextPage,
+          "limit": limit,
+        },
+      );
+      if (response.statusCode == 200 && response.data['list'] != null) {
+        final List<dynamic> dataList = response.data['list'];
+        final newItems =
+            dataList.map((e) => PosStockItemModel.fromJson(e)).toList();
+        if (nextPage == 1) {
+          items = newItems;
+        } else {
+          items.addAll(newItems);
+        }
+        hasMore = response.data['has_more'] ?? false;
+        page = nextPage;
+        if (items.length > page * limit) {
+          if (items.length > page * limit) {
+            items = items.sublist(0, page * limit);
+          }
+        }
+        emit(HomeState.success(
+          posStock: items,
+          currentPage: page,
+          hasMorePages: hasMore,
+        ));
+      }
+    } catch (e) {
+      emit(HomeState.failure("❌ ${e.toString()}"));
+    }
+  }
+
+  void scrollListener() {
+    if (debounceTimer?.isActive ?? false) debounceTimer?.cancel();
+    debounceTimer = Timer(const Duration(milliseconds: 300), () {
+      if (scrollController.position.pixels >=
+              scrollController.position.maxScrollExtent - 200 &&
+          !scrollController.position.outOfRange &&
+          hasMore) {
+        loadMoreData();
+      }
+    });
   }
 }

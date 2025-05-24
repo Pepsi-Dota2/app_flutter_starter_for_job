@@ -1,3 +1,4 @@
+import 'package:app_flutter_starter_for_job/src/core/utils/convert_money.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProductWidget extends StatelessWidget {
     this.reviews,
     required this.price,
     required this.desc,
+    this.onClick,
   });
 
   final String image;
@@ -17,6 +19,7 @@ class ProductWidget extends StatelessWidget {
   final double? rating;
   final int? reviews;
   final String price;
+  final Function()? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +83,32 @@ class ProductWidget extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Text(
-                    '\$${price}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${formatBaht(price)}',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: onClick,
+                          child: Container(
+                            width: size.width * 0.09,
+                            height: size.height * 0.09,
+                            child: Icon(
+                              size: 24,
+                              Icons.shopping_cart,
+                              color: Colors.green.shade500,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

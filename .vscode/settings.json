@@ -1,4 +1,7 @@
 {
     "dart.flutterSdkPath": "/usr/local/Caskroom/flutter/3.27.0/flutter",
-    "cmake.ignoreCMakeListsMissing": true
+    "cmake.ignoreCMakeListsMissing": true,
+    "cSpell.words": [
+        "Skeletonizer"
+    ]
 }

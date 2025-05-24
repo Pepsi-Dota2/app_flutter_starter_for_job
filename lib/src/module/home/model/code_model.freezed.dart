@@ -25,7 +25,7 @@ mixin _$CodeModel {
   String get code => throw _privateConstructorUsedError;
   String get cust_group_main => throw _privateConstructorUsedError;
   int get cust_group_sub => throw _privateConstructorUsedError;
-  String get departmen => throw _privateConstructorUsedError;
+  String get department => throw _privateConstructorUsedError;
   String get ic_shelf => throw _privateConstructorUsedError;
   String get ic_wht => throw _privateConstructorUsedError;
   String get logistic_code => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $CodeModelCopyWith<$Res> {
       String code,
       String cust_group_main,
       int cust_group_sub,
-      String departmen,
+      String department,
       String ic_shelf,
       String ic_wht,
       String logistic_code,
@@ -83,7 +83,7 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
     Object? code = null,
     Object? cust_group_main = null,
     Object? cust_group_sub = null,
-    Object? departmen = null,
+    Object? department = null,
     Object? ic_shelf = null,
     Object? ic_wht = null,
     Object? logistic_code = null,
@@ -112,9 +112,9 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
           ? _value.cust_group_sub
           : cust_group_sub // ignore: cast_nullable_to_non_nullable
               as int,
-      departmen: null == departmen
-          ? _value.departmen
-          : departmen // ignore: cast_nullable_to_non_nullable
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
               as String,
       ic_shelf: null == ic_shelf
           ? _value.ic_shelf
@@ -158,7 +158,7 @@ abstract class _$$CodeModelImplCopyWith<$Res>
       String code,
       String cust_group_main,
       int cust_group_sub,
-      String departmen,
+      String department,
       String ic_shelf,
       String ic_wht,
       String logistic_code,
@@ -185,7 +185,7 @@ class __$$CodeModelImplCopyWithImpl<$Res>
     Object? code = null,
     Object? cust_group_main = null,
     Object? cust_group_sub = null,
-    Object? departmen = null,
+    Object? department = null,
     Object? ic_shelf = null,
     Object? ic_wht = null,
     Object? logistic_code = null,
@@ -214,9 +214,9 @@ class __$$CodeModelImplCopyWithImpl<$Res>
           ? _value.cust_group_sub
           : cust_group_sub // ignore: cast_nullable_to_non_nullable
               as int,
-      departmen: null == departmen
-          ? _value.departmen
-          : departmen // ignore: cast_nullable_to_non_nullable
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
               as String,
       ic_shelf: null == ic_shelf
           ? _value.ic_shelf
@@ -255,7 +255,7 @@ class _$CodeModelImpl implements _CodeModel {
       this.code = "",
       this.cust_group_main = "",
       this.cust_group_sub = 0,
-      this.departmen = "",
+      this.department = "",
       this.ic_shelf = "",
       this.ic_wht = "",
       this.logistic_code = "",
@@ -283,7 +283,7 @@ class _$CodeModelImpl implements _CodeModel {
   final int cust_group_sub;
   @override
   @JsonKey()
-  final String departmen;
+  final String department;
   @override
   @JsonKey()
   final String ic_shelf;
@@ -305,7 +305,7 @@ class _$CodeModelImpl implements _CodeModel {
 
   @override
   String toString() {
-    return 'CodeModel(area_code: $area_code, bu_code: $bu_code, code: $code, cust_group_main: $cust_group_main, cust_group_sub: $cust_group_sub, departmen: $departmen, ic_shelf: $ic_shelf, ic_wht: $ic_wht, logistic_code: $logistic_code, name_1: $name_1, side: $side, title: $title)';
+    return 'CodeModel(area_code: $area_code, bu_code: $bu_code, code: $code, cust_group_main: $cust_group_main, cust_group_sub: $cust_group_sub, department: $department, ic_shelf: $ic_shelf, ic_wht: $ic_wht, logistic_code: $logistic_code, name_1: $name_1, side: $side, title: $title)';
   }
 
   @override
@@ -321,8 +321,8 @@ class _$CodeModelImpl implements _CodeModel {
                 other.cust_group_main == cust_group_main) &&
             (identical(other.cust_group_sub, cust_group_sub) ||
                 other.cust_group_sub == cust_group_sub) &&
-            (identical(other.departmen, departmen) ||
-                other.departmen == departmen) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
             (identical(other.ic_shelf, ic_shelf) ||
                 other.ic_shelf == ic_shelf) &&
             (identical(other.ic_wht, ic_wht) || other.ic_wht == ic_wht) &&
@@ -342,7 +342,7 @@ class _$CodeModelImpl implements _CodeModel {
       code,
       cust_group_main,
       cust_group_sub,
-      departmen,
+      department,
       ic_shelf,
       ic_wht,
       logistic_code,
@@ -373,7 +373,7 @@ abstract class _CodeModel implements CodeModel {
       final String code,
       final String cust_group_main,
       final int cust_group_sub,
-      final String departmen,
+      final String department,
       final String ic_shelf,
       final String ic_wht,
       final String logistic_code,
@@ -395,7 +395,7 @@ abstract class _CodeModel implements CodeModel {
   @override
   int get cust_group_sub;
   @override
-  String get departmen;
+  String get department;
   @override
   String get ic_shelf;
   @override

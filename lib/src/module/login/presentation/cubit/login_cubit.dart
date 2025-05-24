@@ -12,8 +12,10 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<CodeModel?> loginUser(String username, String password) async {
     final dio = Dio();
+    emit(LoginState.loading());
 
     try {
+      emit(LoginState.loading());
       final response = await dio.post(
         ApiPath.authLogin,
         data: {
@@ -21,7 +23,6 @@ class LoginCubit extends Cubit<LoginState> {
           'password': password,
         },
       );
-      print("############${response}");
       if (response.statusCode == 200) {
         final data = response.data;
         final codeModel = CodeModel.fromJson(data);
@@ -30,8 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.failure('Login failed: ${response.statusCode}'));
       }
     } catch (e) {
-      print('Error during login: $e');
-      return null;
+      emit(LoginState.failure('Login failed: $e'));
     }
   }
 }

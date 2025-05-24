@@ -37,6 +37,12 @@ dependencies:
   infinite_scroll_pagination: ^5.0.0
   carousel_slider: ^5.0.0
   fluttertoast: ^8.2.12
+  shimmer: ^3.0.0
+  adaptive_dialog: ^2.4.1
+  dropdown_search: ^6.0.2
+  webview_flutter: ^4.2.2
+  qr_flutter: ^4.1.0
+  pubnub: ^5.2.0
 
 dev_dependencies:
   flutter_test:
